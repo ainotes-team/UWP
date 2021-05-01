@@ -1,0 +1,51 @@
+﻿<Button
+    x:Class="MaterialComponents.MDButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    Padding="24,8,24,8"
+    HorizontalAlignment="Left" VerticalAlignment="Center"
+    FontWeight="Normal">
+
+    <Button.Template>
+        <ControlTemplate TargetType="Button">
+            <Grid x:Name="RootGrid" Background="{TemplateBinding Background}"
+                  CornerRadius="{TemplateBinding CornerRadius}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <Storyboard>
+                                <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="PointerOver">
+                            <Storyboard />
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard />
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <Storyboard />
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid x:Name="myGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                      CornerRadius="{TemplateBinding CornerRadius}" Margin="1">
+                    <ContentPresenter
+                        x:Name="ContentPresenter"
+                        AutomationProperties.AccessibilityView="Raw"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        ContentTransitions="{TemplateBinding ContentTransitions}"
+                        Content="{TemplateBinding Content}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+                <Border CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" />
+            </Grid>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

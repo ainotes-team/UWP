@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="MaterialComponents.MDInvitationsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialComponents="using:MaterialComponents"
+    Background="Transparent">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="AccountItemTemplate" x:DataType="materialComponents:Invitation">
+            <Frame
+                CornerRadius="6" 
+                PointerEntered="ItemPointerEntered" PointerExited="ItemPointerExited">
+                
+                <Grid Margin="8">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock
+                            Text="{x:Bind PermissionLevel}"
+                            FontStyle="Italic"
+                            VerticalAlignment="Center"
+                            Margin="12,0,0,0" />
+                    
+                        <TextBlock
+                            Text="{x:Bind FileName}"
+                            Style="{ThemeResource BaseTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="12, 0, 12, 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="4">
+                        <materialComponents:MDButton Text="Accept" ButtonStyle="Primary" Click="InvitationAcceptedClick"/>
+                        <materialComponents:MDButton Text="Decline" ButtonStyle="Secondary" Click="InvitationDeclinedClick"/>
+                    </StackPanel>
+                </Grid>
+            </Frame>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ListView Name="InvitationsList" SelectionMode="Single" ItemTemplate="{StaticResource AccountItemTemplate}"
+              IsItemClickEnabled="True">
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListView.ItemContainerStyle>
+    </ListView>
+</UserControl>

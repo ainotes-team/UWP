@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="MaterialComponents.MDShareView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaterialComponents"
+    Background="Transparent">
+
+    <Grid Background="Transparent" Width="600" Height="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Frame x:Name="RemoteSharing"
+               Grid.Row="0"
+               Padding="15 10 15 10"
+               CornerRadius="6">
+            
+            <StackPanel Spacing="5">
+                <local:MDLabel Text="Remote Sharing" FontSize="24" />
+                <local:MDEntry x:Name="RemoteEntry" Placeholder="Add people" KeyDown="OnRemoteEntryKeyDown" />
+                <local:MDAccountsList x:Name="RemoteAccountsList" Height="90" />
+                <StackPanel HorizontalAlignment="Right">
+                    <local:MDButton x:Name="RemoteDoneButton" HorizontalAlignment="Right">Done</local:MDButton>
+                </StackPanel>
+            </StackPanel>
+            
+        </Frame>
+        
+        <Frame x:Name="LocalSharing"
+               Grid.Row="2"
+               Padding="15 10 15 10"
+               CornerRadius="6">
+            
+            <StackPanel>
+                <local:MDLabel Text="Local Sharing" FontSize="24" />
+                <ListView x:Name="LocalDevicesList" SelectionMode="Multiple" />
+                <StackPanel HorizontalAlignment="Right">
+                    <local:MDButton x:Name="LocalCancelButton" HorizontalAlignment="Right" ButtonStyle="Secondary">Cancel</local:MDButton>
+                    <local:MDButton x:Name="LocalSendButton" HorizontalAlignment="Right">Send</local:MDButton>
+                    <local:MDButton x:Name="LocalLiveButton" HorizontalAlignment="Right">Live Share</local:MDButton>
+                </StackPanel>
+            </StackPanel>
+            
+        </Frame>
+    </Grid>
+</UserControl>

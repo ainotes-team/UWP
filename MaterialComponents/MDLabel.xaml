@@ -1,0 +1,7 @@
+﻿<UserControl
+    x:Class="MaterialComponents.MDLabel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <TextBlock x:Name="TextBlock" Text="{x:Bind Text, Mode=TwoWay}" ContextRequested="OnContextRequested" />
+</UserControl>

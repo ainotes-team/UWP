@@ -1,0 +1,14 @@
+<controls:CustomFrame
+    x:Class="MaterialComponents.MDToolbarItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Helpers.Controls"
+    
+    Padding="0 6 0 6" Margin="6 6 6 6"
+    Width="36" Height="36"
+    CornerRadius="18"
+    BorderBrush="Transparent">
+    
+    <Image Name="ToolbarItemImage" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    
+</controls:CustomFrame>

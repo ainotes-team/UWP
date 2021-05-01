@@ -1,0 +1,33 @@
+﻿<controls1:CustomFrame
+    x:Class="MaterialComponents.MDNotification"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="using:MaterialComponents"
+    xmlns:controls1="using:Helpers.Controls"
+    Padding="12, 8, 12, 12"
+    Margin="5"
+    CornerRadius="10"
+    Width="260"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    BorderThickness="1">
+    
+    <StackPanel Orientation="Vertical">
+        <StackPanel x:Name="InfoLayout"
+                    Orientation="Vertical">
+            
+            <md:MDLabel x:Name="TitleLabel"
+                                  FontSize="18"
+                                  Margin="0"/>
+        </StackPanel>
+        
+        <StackPanel x:Name="ButtonLayout"
+                    Orientation="Horizontal">
+            
+            <md:MDButton x:Name="AcceptButton"/>
+            <md:MDButton x:Name="DismissButton"/>
+        </StackPanel>
+        
+    </StackPanel>
+    
+</controls1:CustomFrame>

@@ -1,0 +1,121 @@
+﻿<UserControl
+    x:Class="MaterialComponents.MDPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ComboBox x:Name="InternalComboBox"
+        Padding="12, 12, 3, 12"
+        TabNavigation="Once"
+        HorizontalAlignment="Left" VerticalAlignment="Top"
+        HorizontalContentAlignment="Stretch">
+
+        <ComboBox.Template>
+            <ControlTemplate TargetType="ComboBox">
+                <Grid x:Name="LayoutRoot">
+                    <Grid.Resources>
+                        <!-- ReSharper disable Xaml.RedundantResource -->
+                        <Storyboard x:Key="OverlayOpeningAnimation" />
+                        <Storyboard x:Key="OverlayClosingAnimation" />
+                        <!-- ReSharper restore Xaml.RedundantResource -->
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="PointerOver" />
+                            <VisualState x:Name="Pressed" />
+                            <VisualState x:Name="Disabled" />
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="FocusStates">
+                            <VisualState x:Name="Focused" />
+                            <VisualState x:Name="FocusedPressed" />
+                            <VisualState x:Name="Unfocused" />
+                            <VisualState x:Name="PointerFocused" />
+                            <VisualState x:Name="FocusedDropDown" />
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="DropDownStates">
+                            <VisualState x:Name="Opened" />
+                            <VisualState x:Name="Closed" />
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <ContentPresenter x:Name="HeaderContentPresenter"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      Content="{TemplateBinding Header}"
+                                      FontWeight="{ThemeResource ComboBoxHeaderThemeFontWeight}"
+                                      FlowDirection="{TemplateBinding FlowDirection}"
+                                      Margin="{ThemeResource ComboBoxHeaderThemeMargin}"
+                                      Opacity="0"
+                                      Visibility="Collapsed" x:DeferLoadStrategy="Lazy" />
+                    <Border x:Name="Background"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="4"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" />
+                    <Border x:Name="HighlightBackground"
+                            BorderBrush="{ThemeResource ComboBoxBackgroundBorderBrushUnfocused}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{ThemeResource ComboBoxBackgroundUnfocused}" Grid.ColumnSpan="2"
+                            Grid.Column="0"
+                            Visibility="Collapsed"
+                            Opacity="0" Grid.Row="1" />
+                    <ContentPresenter x:Name="ContentPresenter"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}"
+                                      Grid.Row="1" Grid.Column="0">
+                        <TextBlock x:Name="PlaceholderTextBlock"
+                                   Foreground="{ThemeResource ComboBoxPlaceHolderForeground}"
+                                   Text="{TemplateBinding PlaceholderText}" />
+                    </ContentPresenter>
+                    <FontIcon x:Name="DropDownGlyph"
+                              AutomationProperties.AccessibilityView="Raw"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              Foreground="{ThemeResource ComboBoxDropDownGlyphForeground}"
+                              FontSize="12" FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                              Glyph="&#xE0E5;"
+                              HorizontalAlignment="Right"
+                              IsHitTestVisible="False"
+                              Margin="0,10,13,10"
+                              VerticalAlignment="Center" />
+                    <Grid x:Name="Popup" Grid.Row="2" Grid.Column="0"
+                          Background="{TemplateBinding Background}" Visibility="Collapsed">
+                        <ScrollViewer x:Name="ScrollViewer"
+                                      AutomationProperties.AccessibilityView="Raw"
+                                      BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
+                                      Foreground="{ThemeResource ComboBoxDropDownForeground}"
+                                      HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                      IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                      IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                      IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                      MinWidth="{Binding TemplateSettings.DropDownContentMinWidth,
+                                                      RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                      VerticalSnapPointsType="OptionalSingle"
+                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                      VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                                      VerticalSnapPointsAlignment="Near"
+                                      ZoomMode="Disabled">
+                            <ItemsPresenter Margin="{ThemeResource ComboBoxDropdownContentMargin}" />
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </ComboBox.Template>
+
+        <ComboBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <CarouselPanel />
+            </ItemsPanelTemplate>
+        </ComboBox.ItemsPanel>
+    </ComboBox>
+</UserControl>

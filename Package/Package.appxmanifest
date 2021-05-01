@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package
+        xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+        xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+        xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+        xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+        xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+        xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+        xmlns:desktop2="http://schemas.microsoft.com/appx/manifest/desktop/windows10/2"
+        IgnorableNamespaces="uap mp uap3 desktop desktop2">
+
+  <Identity
+          Name="1875vincentscode.AINotes"
+          Publisher="CN=2E5D2003-2E21-48BD-AD54-CD7DF598F6AA"
+          Version="2.21.226.0" />
+
+  <mp:PhoneIdentity PhoneProductId="41bed703-e99f-4a97-bfa9-f40c97998f64" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>AINotes</DisplayName>
+    <PublisherDisplayName>vincentscode</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+                 Executable="$targetnametoken$.exe"
+                 EntryPoint="AINotes.App">
+      <uap:VisualElements
+              DisplayName="AINotes"
+              Square150x150Logo="Assets\Square150x150Logo.png"
+              Square44x44Logo="Assets\Square44x44Logo.png"
+              Description="AINotes"
+              BackgroundColor="transparent">
+        <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait" />
+          <uap:Rotation Preference="landscape" />
+          <uap:Rotation Preference="portraitFlipped" />
+        </uap:InitialRotationPreference>
+      </uap:VisualElements>
+      <Extensions>
+        <!-- AINotes FileType -->
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="ainotes-document">
+            <uap:Logo>Assets\FileIcon2.png</uap:Logo>
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="application/json">.ainote</uap:FileType>
+              <uap:FileType ContentType="application/json">.ainotes</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>AINotes Datei</uap:DisplayName>
+            <uap:InfoTip>AINotes Datei</uap:InfoTip>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+
+        <!-- Share -->
+        <uap:Extension Category="windows.shareTarget">
+          <uap:ShareTarget>
+            <uap:SupportedFileTypes>
+              <uap:SupportsAnyFileType />
+            </uap:SupportedFileTypes>
+            <uap:DataFormat>html</uap:DataFormat>
+            <uap:DataFormat>text</uap:DataFormat>
+            <uap:DataFormat>uri</uap:DataFormat>
+            <uap:DataFormat>bitmap</uap:DataFormat>
+          </uap:ShareTarget>
+        </uap:Extension>
+
+        <!-- Printer -->
+        <desktop2:Extension Category="windows.appPrinter">
+          <desktop2:AppPrinter DisplayName="AINotes" Parameters="/insertprint %1" />
+        </desktop2:Extension>
+
+        <!-- URI -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="ainotes">
+            <uap:Logo>Assets\Square150x150Logo.png</uap:Logo>
+            <uap:DisplayName>AINotes URI</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <!-- App Extensions -->
+        <uap3:Extension Category="windows.appExtensionHost">
+          <uap3:AppExtensionHost>
+            <uap3:Name>de.vincentscode.ainotesExtension</uap3:Name>
+          </uap3:AppExtensionHost>
+        </uap3:Extension>
+
+        <!-- Desktop Bridge -->
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="AINotesFullTrustComponent" />
+        </uap:Extension>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="FullTrustComponent\FullTrustComponent.exe" />
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
+
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="confirmAppClose" />
+
+    <DeviceCapability Name="webcam"/>
+    <DeviceCapability Name="microphone"/>
+    <DeviceCapability Name="bluetooth"/>
+  </Capabilities>
+</Package>
