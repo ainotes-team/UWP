@@ -1,0 +1,80 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.CameraScreen"
+    x:Uid="/Screens_CameraScreen/Self"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages"
+    xmlns:controls="using:AINotes.Controls"
+    xmlns:materialComponents="using:MaterialComponents"
+    xmlns:controls1="using:Helpers.Controls">
+    
+    <Grid Padding="0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+        <!-- Camera Preview -->
+        <controls:CustomCameraPreview x:Name="CameraPreview" OnPhotoCaptured="OnPhotoCaptured"/>
+        
+        <!-- Controls Overlay -->
+        <Grid Padding="0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Control Buttons -->
+            <StackPanel Grid.Row="1" Grid.Column="1"
+                        Orientation="Vertical" Margin="0 0 20 0">
+                <controls1:CustomFrame Background="White" CornerRadius="37" Margin="10">
+                    <StackPanel Orientation="Vertical" Padding="0 10 0 0">
+                        <StackPanel x:Name="OptionsPanel" Orientation="Vertical" Visibility="Collapsed">
+                            <materialComponents:MDToolbarItem x:Uid="/Screens_CameraScreen/SwitchCameraButton" ToolTip="Switch Camera"
+                                                              ImageSource="/Assets/Images/icons8_switch_camera_48.png"
+                                                              Width="48" Height="48" CornerRadius="24"
+                                                              Released="OnSwitchCameraButtonClicked" />
+                            <materialComponents:MDToolbarItem x:Name="AutoScanButton" ToolTip="Auto Crop"
+                                                              Selectable="True"
+                                                              ImageSource="/Assets/Images/icons8_scan_48.png"
+                                                              Width="48" Height="48" CornerRadius="24"
+                                                              Released="OnAutoScanButtonClicked" />
+                            <materialComponents:MDToolbarItem x:Name="EditImagesButton" ToolTip="Edit"
+                                                              ImageSource="/Assets/Images/icons8_edit_file_48.png"
+                                                              Width="48" Height="48" CornerRadius="24"
+                                                              Released="OnEditImagesButtonClicked" />
+                            <materialComponents:MDToolbarItem x:Name="InsertImagesButton" ToolTip="Insert"
+                                                              ImageSource="/Assets/Images/icons8_save_close_48.png"
+                                                              Width="48" Height="48" CornerRadius="24"
+                                                              Released="OnInsertImagesButtonClicked" />
+                        </StackPanel>
+                        
+                        <materialComponents:MDToolbarItem x:Uid="/Screens_CameraScreen/OpenOptions" ToolTip="Options"
+                                                          ImageSource="/Assets/Images/icons8_arrow_up_48.png"
+                                                          Width="48" Height="48" CornerRadius="24"
+                                                          Released="OnOptionsButtonClicked" />
+                        
+                        <materialComponents:MDToolbarItem x:Name="CaptureButton" ToolTip="Capture"
+                                                          ImageSource="/Assets/Images/icons8_camera_48.png"
+                                                          Width="64" Height="64" CornerRadius="32"
+                                                          Released="OnCaptureButtonClicked" />
+                    </StackPanel>
+                </controls1:CustomFrame>
+            </StackPanel>
+            
+            <!-- Previews -->
+            <!-- TODO: Fix Preview Scrolling -->
+            <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                          VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled">
+                <StackPanel x:Name="PreviewsStack" Height="200" Orientation="Horizontal">
+                    <StackPanel.ChildrenTransitions>
+                        <AddDeleteThemeTransition />
+                    </StackPanel.ChildrenTransitions>
+                </StackPanel>
+            </ScrollViewer>
+            
+        </Grid>
+    </Grid>
+    
+</pages:CustomPageContent>

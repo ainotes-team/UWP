@@ -1,0 +1,8 @@
+<Frame
+    x:Class="AINotes.Controls.Pages.CustomPageContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    CornerRadius="0"
+    Padding="0"
+    Margin="0">
+</Frame>

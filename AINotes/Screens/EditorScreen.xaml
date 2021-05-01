@@ -1,0 +1,53 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.EditorScreen"
+    DiscordDetails="Editing a file"
+    DiscordDetailsState="{x:Bind LoadedFileModel.Name, ConverterParameter='Working on', Converter={StaticResource PrependStringConverter}}"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages"
+    xmlns:controls="using:AINotes.Controls"
+    xmlns:containers="using:AINotes.Controls.Containers"
+    xmlns:converters="using:Helpers.Converters">
+    
+    <pages:CustomPageContent.Resources>
+        <converters:PrependStringConverter x:Key="PrependStringConverter" />
+    </pages:CustomPageContent.Resources>
+    
+    <ScrollViewer x:Name="Scroll"
+                  Background="Transparent"
+                  IsHorizontalRailEnabled = "True"
+                  IsVerticalRailEnabled = "True"
+                  HorizontalScrollBarVisibility = "Visible"
+                  IsHorizontalScrollChainingEnabled = "True"
+                  ManipulationMode = "System"
+                  ZoomMode = "Enabled"
+                  MinZoomFactor = "{x:Bind ScrollMinZoom}"
+                  MaxZoomFactor = "{x:Bind ScrollMaxZoom}"
+                  HorizontalScrollMode = "Enabled"
+                  VerticalScrollMode = "Enabled">
+        <Grid Padding="0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <containers:CustomMaxSizeBackgroundCanvas x:Name="MaxSizeBackgroundCanvas"
+                                                      IsHitTestVisible="False"
+                                                      ParentScrollView="{x:Bind Scroll}" />
+            
+            <containers:DocumentCanvas x:Name="Document"
+                                       Background="Transparent" 
+                                       IsHitTestVisible="True" />
+            
+            <controls:CustomInkCanvas x:Name="InkCanvas"
+                                      OverlayCanvas="{x:Bind SelectionCanvas}"
+                                      InputTransparent="True"
+                                      IsHitTestVisible="False" />
+            
+            <Canvas x:Name="SelectionCanvas" Background="{x:Null}" />
+            
+            <Canvas x:Name="AbsoluteOverlay" Background="{x:Null}" />
+            
+        </Grid>
+    </ScrollViewer>
+</pages:CustomPageContent>

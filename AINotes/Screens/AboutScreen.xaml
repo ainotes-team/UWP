@@ -1,0 +1,15 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.AboutScreen"
+    x:Uid="/Screens_AboutScreen/Self"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages">
+    
+    <StackPanel Padding="10">
+        <TextBlock x:Uid="/Screens_AboutScreen/Team" />
+        <TextBlock x:Uid="/Screens_AboutScreen/About"/>
+        <TextBlock x:Uid="/Screens_AboutScreen/License"/>
+    </StackPanel>
+    
+</pages:CustomPageContent>

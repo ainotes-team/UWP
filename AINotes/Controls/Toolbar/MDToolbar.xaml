@@ -1,0 +1,43 @@
+﻿<Grid
+    x:Class="AINotes.Controls.Toolbar.MDToolbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="using:MaterialComponents"
+    xmlns:tb="using:AINotes.Controls.Toolbar">
+    
+    <Grid.ColumnDefinitions>
+        <!-- ReSharper disable UnusedMember.Local -->
+        <ColumnDefinition x:Name="BackButtonColumn" Width="Auto" MinWidth="12" />
+        <ColumnDefinition x:Name="TitleColumn" Width="Auto" />
+        <ColumnDefinition x:Name="SpacerColumn" Width="6" />
+        <ColumnDefinition x:Name="SecondaryToolbarColumn" Width="*" />
+        <ColumnDefinition x:Name="PrimaryToolbarColumn" Width="*" />
+        <!-- ReSharper restore UnusedMember.Local -->
+    </Grid.ColumnDefinitions>
+    
+    <md:MDToolbarItem x:Name="BackButton" Grid.Column="0"
+                      Released="OnBackButtonReleased"
+                      ImageSource="/Assets/Images/icons8_back_48.png" />
+    
+    <md:MDLabel x:Name="TitleLabel" AutomationId="PageTitle" Grid.Column="1" FontSize="20"
+                TextTrimming="CharacterEllipsis" MaxWidth="250"
+                VerticalAlignment="Center" HorizontalAlignment="Left"
+                TextAlignment="Center" HorizontalTextAlignment="Center"
+                ContextRequested="OnTitleContextRequested" />
+    
+    <StackPanel x:Name="SecondaryToolbar" Grid.Column="3"
+                Orientation="Horizontal"
+                HorizontalAlignment="Left"
+                FlowDirection="LeftToRight"
+                Background="Transparent" 
+                Height="{x:Bind tb:MDToolbar.ToolbarHeight}"
+                Spacing="0" Padding="0" Margin="0" />
+    
+    <StackPanel x:Name="MainToolbar" Grid.Column="4"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                FlowDirection="RightToLeft"
+                Background="Transparent" 
+                Height="{x:Bind tb:MDToolbar.ToolbarHeight}"
+                Spacing="0" Padding="0" Margin="0" />
+</Grid>

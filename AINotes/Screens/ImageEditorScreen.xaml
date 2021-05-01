@@ -1,0 +1,52 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.ImageEditorScreen"
+    x:Uid="/Screens_ImageEditorScreen/Self"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages"
+    xmlns:materialComponents="using:MaterialComponents">
+    
+    <Grid Padding="0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Image -->
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="MainImageContainer" SizeChanged="OnMainImageContainerSizeChanged">
+            <Image x:Name="EditingImage" Canvas.Left="0" Canvas.Top="0" />
+        </Canvas>
+        
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="6" Margin="10 10 10 10" HorizontalAlignment="Center">
+            <!-- ReSharper disable UnusedMember.Local -->
+            <materialComponents:MDButton Name="DeleteButton" x:Uid="/Screens_ImageEditorScreen/DeleteButton" Width="100" Text="Delete" ButtonStyle="Error" Click="OnDeleteButtonClicked"/>
+            <materialComponents:MDButton Name="NewPicButton" x:Uid="/Screens_ImageEditorScreen/NewPicButton" Width="160" Text="Camera" Click="OnNewPicButtonClicked"/>
+            <materialComponents:MDButton Name="CornerAdjustButton" x:Uid="/Screens_ImageEditorScreen/CornerAdjustButton" Width="160" Text="Adjust Corners" Click="OnCornerAdjustButtonClicked"/>
+            <materialComponents:MDButton Name="CropButton" x:Uid="/Screens_ImageEditorScreen/CropButton" Width="160" Text="Crop" Click="OnCropButtonClicked"/>
+            <materialComponents:MDButton Name="SaveButton" x:Uid="/Screens_ImageEditorScreen/InsertButton" Width="160" Text="Save" Click="OnSaveButtonClicked"/>
+            <materialComponents:MDButton Name="ApplyButton" x:Uid="/Screens_ImageEditorScreen/ApplyButton" Width="100" Text="Apply" Click="OnApplyButtonClicked"/>
+            <materialComponents:MDButton Name="CloseButton" x:Uid="/Screens_ImageEditorScreen/CloseButton" Width="100" Text="Cancel" Click="OnCloseButtonClicked"/>
+            <!-- ReSharper restore UnusedMember.Local -->
+        </StackPanel>
+        
+        <!-- Previews -->
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" x:Name="PreviewsScrollView"
+                      HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled">
+            <StackPanel x:Name="PreviewsStack" Orientation="Vertical" Width="200">
+                <StackPanel.ChildrenTransitions>
+                    <AddDeleteThemeTransition />
+                </StackPanel.ChildrenTransitions>
+            </StackPanel>
+            
+        </ScrollViewer>
+        
+    </Grid>
+    
+</pages:CustomPageContent>

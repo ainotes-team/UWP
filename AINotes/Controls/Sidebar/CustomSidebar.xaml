@@ -1,0 +1,57 @@
+<Grid
+    x:Class="AINotes.Controls.Sidebar.CustomSidebar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="using:MaterialComponents">
+    
+    <Grid x:Name="SidebarItemGrid"
+          Margin="0"
+          Padding="0"
+          ColumnSpacing="0"
+          RowSpacing="0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="48" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel x:Name="SidebarItems"
+                    Orientation="Vertical"
+                    Spacing="0"
+                    Padding="0"
+                    Margin="0" />
+        
+    </Grid>
+    
+    <RelativePanel x:Name="Content">
+        <Grid x:Name="TitlebarContainer">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <md:MDLabel Grid.Column="0" x:Name="SidebarCaption" FontSize="24"/>
+            <StackPanel Grid.Column="1" x:Name="TitlebarButtonsContainer" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                <md:MDToolbarItem x:Name="CloseButton" HorizontalAlignment="Right"
+                                           ToolTip="Close"
+                                           ImageSource="/Assets/Images/icons8_delete_48.png"/>
+                
+            </StackPanel>
+        </Grid>
+        
+        <Frame x:Name="SidebarContent"
+               Padding="0"
+               Margin="0" />
+        
+        <StackPanel x:Name="BottomNotificationPanel"
+                    Orientation="Vertical" />
+        
+    </RelativePanel>
+    
+    <md:MDToolbarItem x:Name="ChangeStateButton"
+                               ImageSource="/Assets/Images/icons8_forward_48.png"
+                               Visibility="Collapsed" />
+</Grid>

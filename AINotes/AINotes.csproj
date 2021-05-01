@@ -1,0 +1,1667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{CA97281E-7636-48E4-B167-639D5A617E88}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AINotes</RootNamespace>
+    <AssemblyName>AINotes</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <LangVersion>latest</LangVersion>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>False</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BINDING_DEBUG_OUTPUT;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION;</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_MAIN;</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.activations.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.shortcuts.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.desktopbridge.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CloudAdapter.cs" />
+    <Compile Include="Components\Component.controller.cs">
+      <DependentUpon>Component.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Component.xaml.cs">
+      <DependentUpon>Component.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Implementations\SimpleComponent.cs" />
+    <Compile Include="Components\ITool.cs" />
+    <Compile Include="Components\Tools\EraserTool.cs" />
+    <Compile Include="Components\Tools\HandwritingTool.cs" />
+    <Compile Include="Components\Tools\ImageComponentTool.cs" />
+    <Compile Include="Components\Tools\SelectionComponentTool.cs" />
+    <Compile Include="Components\Tools\SimpleTool.cs" />
+    <Compile Include="Components\Tools\TextComponentTool.cs" />
+    <Compile Include="Controls\Containers\CustomMaxSizeBackgroundCanvas.xaml.cs">
+      <DependentUpon>CustomMaxSizeBackgroundCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Containers\DocumentCanvas.xaml.cs">
+      <DependentUpon>DocumentCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomCameraPreview.controller.cs">
+      <DependentUpon>CustomCameraPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomCameraPreview.xaml.cs">
+      <DependentUpon>CustomCameraPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\CustomLineModePicker.cs" />
+    <Compile Include="Controls\CustomInkCanvas.xaml.cs">
+      <DependentUpon>CustomInkCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageEditing\AnalyzedImage.controller.cs">
+      <DependentUpon>AnalyzedImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageEditing\AnalyzedImage.xaml.cs">
+      <DependentUpon>AnalyzedImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\CustomColorPicker.xaml.cs">
+      <DependentUpon>CustomColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\CustomFontSizeInput.xaml.cs">
+      <DependentUpon>CustomFontSizeInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\CustomShortcutEntry.xaml.cs">
+      <DependentUpon>CustomShortcutEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\EditableCustomEntry.xaml.cs">
+      <DependentUpon>EditableCustomEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MovableCanvasNob.cs" />
+    <Compile Include="Controls\Pages\CustomDropdown.cs" />
+    <Compile Include="Controls\Pages\CustomPageContent.xaml.cs">
+      <DependentUpon>CustomPageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Popups\MDPopup.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomFormulaView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomSymbolsView.cs" />
+    <Compile Include="Controls\Sidebar\Content\SidebarBrowserView.cs" />
+    <Compile Include="Controls\Sidebar\Content\SidebarDocumentList.cs" />
+    <Compile Include="Controls\Sidebar\Content\SidebarFileBookmarks.cs" />
+    <Compile Include="Controls\Sidebar\Content\SidebarMoodleView.cs" />
+    <Compile Include="Controls\Sidebar\Content\SidebarThesaurus.cs" />
+    <Compile Include="Controls\Sidebar\CustomSidebar.xaml.cs">
+      <DependentUpon>CustomSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sidebar\ISidebarView.cs" />
+    <Compile Include="Controls\Toolbar\MDToolbar.xaml.cs">
+      <DependentUpon>MDToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sidebar\Content\SidebarContentResources.xaml.cs">
+      <DependentUpon>SidebarContentResources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Controls\FileManagement\CustomFileGridView.xaml.cs">
+      <DependentUpon>CustomFileGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileManagement\FileLabelView.xaml.cs">
+      <DependentUpon>FileLabelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pages\CustomContentPage.xaml.cs">
+      <DependentUpon>CustomContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Popups\MDContentPopup.cs" />
+    <Compile Include="Controls\Popups\PopupNavigation.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomCalculatorView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomTasksView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomNotesView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomRecentFilesView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomRepresentationPlanView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomSearchView.cs" />
+    <Compile Include="Controls\Sidebar\Content\CustomTimeTableView.cs" />
+    <Compile Include="Controls\CustomDesmosView.xaml.cs">
+      <DependentUpon>CustomDesmosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Clipboard.cs" />
+    <Compile Include="Helpers\ClipboardManager.cs" />
+    <Compile Include="Helpers\Converters\UserIdToNameConverter.cs" />
+    <Compile Include="Helpers\ExtensionManager.cs" />
+    <Compile Include="Helpers\Extensions\CanvasExtensions.cs" />
+    <Compile Include="Helpers\Extensions\GeometryExtensions.cs" />
+    <Compile Include="Helpers\Extensions\ImageSourceExtensions.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\Geometry\Geometry.cs" />
+    <Compile Include="Helpers\Geometry\GeometryLine.cs" />
+    <Compile Include="Helpers\Geometry\GeometryPoint.cs" />
+    <Compile Include="Helpers\Geometry\GeometryPolyline.cs" />
+    <Compile Include="Helpers\Geometry\GeometryRectangle.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVector.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVector2.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVector3.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVectorLine2.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVectorLine3.cs" />
+    <Compile Include="Helpers\Geometry\GeometryVectorPlane3.cs" />
+    <Compile Include="Helpers\Geometry\HoughLine.cs" />
+    <Compile Include="Helpers\Geometry\HoughTransform.cs" />
+    <Compile Include="Helpers\Imaging\ImageCreator.cs" />
+    <Compile Include="Helpers\Imaging\ImageEditingHelper.cs" />
+    <Compile Include="Helpers\Imaging\ImageSourceHelper.cs" />
+    <Compile Include="Helpers\InkCanvas\InkHelper.cs" />
+    <Compile Include="Helpers\InkCanvas\PolylineConversion.cs" />
+    <Compile Include="Helpers\Integrations\GoogleVisionHelper.cs" />
+    <Compile Include="Helpers\Integrations\MoodleHelper.cs" />
+    <Compile Include="Helpers\Integrations\OneNoteHelper.cs" />
+    <Compile Include="Helpers\Integrations\TeamsEducationHelper.cs" />
+    <Compile Include="Helpers\LocalSharingHelper.ConnectionHandlers.cs">
+      <DependentUpon>LocalSharingHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\LocalSharingHelper.cs" />
+    <Compile Include="Helpers\Merging\ComponentMerger.cs" />
+    <Compile Include="Helpers\Merging\FileMerger.cs" />
+    <Compile Include="Helpers\Merging\StrokeMerger.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\BooleanPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\CustomLabelListPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\DoublePreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\EnumPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\IntegerPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\InvocationPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\ComponentListPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\Preference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\ShortcutPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\SidebarItemsPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\SidebarStatePreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\StringListPreference.cs" />
+    <Compile Include="Helpers\PreferenceHelpers\StringPreference.cs" />
+    <Compile Include="Helpers\Shortcuts.cs" />
+    <Compile Include="Helpers\Sidebar\RepresentationPlan\Implementations\DavinciParser.cs" />
+    <Compile Include="Helpers\Sidebar\RepresentationPlan\IRepresentationPlanParser.cs" />
+    <Compile Include="Helpers\Sidebar\RepresentationPlan\Models\RepresentationItemModel.cs" />
+    <Compile Include="Helpers\Sidebar\RepresentationPlan\Models\RepresentationPlanModel.cs" />
+    <Compile Include="Helpers\Sidebar\RepresentationPlan\RepresentationPlanManager.cs" />
+    <Compile Include="Helpers\Sidebar\SidebarHelper.cs" />
+    <Compile Include="Helpers\SocketService.cs" />
+    <Compile Include="Helpers\ThemeHelper.cs" />
+    <Compile Include="Helpers\ThesaurusHelper.cs" />
+    <Compile Include="Helpers\UserActions\UserAction.cs" />
+    <Compile Include="Helpers\UserActions\UserActionManager.cs" />
+    <Compile Include="Icon.cs" />
+    <Compile Include="Models\DirectoryModel.cs" />
+    <Compile Include="Models\Enums\DocumentLineMode.cs" />
+    <Compile Include="Models\Enums\InkCanvasMode.cs" />
+    <Compile Include="Models\ExtensionModel.cs" />
+    <Compile Include="Models\FileBookmarkModel.cs" />
+    <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\IFMSListableModel.cs" />
+    <Compile Include="Models\InkHelperModel.cs" />
+    <Compile Include="Models\LabelModel.cs" />
+    <Compile Include="Models\PenModel.cs" />
+    <Compile Include="Models\ComponentModel.cs" />
+    <Compile Include="Models\ShortcutModel.cs" />
+    <Compile Include="Models\StrokeModel.cs" />
+    <Compile Include="Models\ThemeModel.cs" />
+    <Compile Include="Components\Implementations\ImageComponent.cs" />
+    <Compile Include="Components\Implementations\SelectionComponent.cs" />
+    <Compile Include="Components\Implementations\TextComponent.cs" />
+    <Compile Include="Components\ComponentManager.cs" />
+    <Compile Include="Preferences.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\AboutScreen.controller.cs">
+      <DependentUpon>AboutScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\AboutScreen.xaml.cs">
+      <DependentUpon>AboutScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CameraScreen.controller.cs">
+      <DependentUpon>CameraScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CameraScreen.shortcuts.cs">
+      <DependentUpon>CameraScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CameraScreen.xaml.cs">
+      <DependentUpon>CameraScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\EditorScreen.controller.cs">
+      <DependentUpon>EditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\EditorScreen.shortcuts.cs">
+      <DependentUpon>EditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\EditorScreen.xaml.cs">
+      <DependentUpon>EditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FeedbackScreen.controller.cs">
+      <DependentUpon>FeedbackScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FeedbackScreen.xaml.cs">
+      <DependentUpon>FeedbackScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FileManagerScreen.controller.cs">
+      <DependentUpon>FileManagerScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FileManagerScreen.popups.cs">
+      <DependentUpon>FileManagerScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FileManagerScreen.shortcuts.cs">
+      <DependentUpon>FileManagerScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FileManagerScreen.xaml.cs">
+      <DependentUpon>FileManagerScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ImageEditorScreen.controller.cs">
+      <DependentUpon>ImageEditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ImageEditorScreen.shortcuts.cs">
+      <DependentUpon>ImageEditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ImageEditorScreen.xaml.cs">
+      <DependentUpon>ImageEditorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SettingsScreen.controller.cs">
+      <DependentUpon>SettingsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SettingsScreen.xaml.cs">
+      <DependentUpon>SettingsScreen.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Desmos\calculator.js" />
+    <Content Include="Assets\Desmos\index.html" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\lines2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_database_import_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_empty_box_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_exit_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_export_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_help_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_info_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_mailbox.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_mailbox_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_mailing_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_arrow_down_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_synchronize_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_triangle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_user_account_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\lines0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\lines1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\lines2.png" />
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\FileIcon2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_crawl0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_crawl1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_death.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_obstacle0_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_obstacle0_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_obstacle0_2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_obstacle1_0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_obstacle1_1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_street.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_walk0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\dino_walk1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\grid0.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\grid1.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\grid2.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_access_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_add_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_add_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_add_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_align_center_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_align_left_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_align_right_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_ball_point_pen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_bold_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_bookmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_bookmark_page_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_bring_to_front_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_calculator_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_chat_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_checkmark_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_chisel_tip_marker_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_circle_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_cloud_checked_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_cloud_refresh_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_collapse_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_color_dropper_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_comments_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_crop_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_dashed_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_data_sheet_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_delete_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_descending_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_details_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_documents_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_drag_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_edit_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_empty_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_enlarge_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_eraser_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_error_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_expand_arrow_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_expired_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_feedback_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_file_preview_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_filter_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_flip_horizontal_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_flip_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_folder_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_forward_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_full_screen_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_general_ocr_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_grid_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_group_task_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_image_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_insert_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_italic_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_lasso_tool_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_menu_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_menu_vertical_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_mind_map_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_more_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_note_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_pencil_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_pentagon_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_planner_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_plus_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_plus_math_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_presentation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_redo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_reset_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_resize_horizontal_96.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_save_close_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_scan_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_search_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_search_folder_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_search_in_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_send_to_back_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_settings_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_shared_document_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_sorting_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_spreadsheet_file_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_switch_camera_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_task_planning_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_text_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_timetable_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_time_machine_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_todo_list_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_trash_can_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_unavailable_cloud_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_underline_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_undo_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_update_left_rotation_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_view_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_voice_recognition_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_white_people_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_white_star_filled_48.png" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\openthesaurus.db3" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\de-DE\Screens_CameraScreen.resw" />
+    <PRIResource Include="Strings\de-DE\Screens_FileManagerScreen.resw" />
+    <PRIResource Include="Strings\de-DE\Screens_ImageEditorScreen.resw" />
+    <PRIResource Include="Strings\en-US\Screens_CameraScreen.resw" />
+    <PRIResource Include="Strings\en-US\Screens_FileManagerScreen.resw" />
+    <PRIResource Include="Strings\en-US\Screens_ImageEditorScreen.resw" />
+    <PRIResource Include="Strings\Shared.resw" />
+    <PRIResource Include="Strings\de-DE\Controls_FileManagement_CustomDocumentList.resw" />
+    <PRIResource Include="Strings\de-DE\Screens_AboutScreen.resw" />
+    <PRIResource Include="Strings\de-DE\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Controls_FileManagement_CustomDocumentList.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Screens_AboutScreen.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ExCSS-Core">
+      <Version>4.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.23</Version>
+    </PackageReference>
+    <PackageReference Include="Imaging.Library">
+      <Version>1.1.1</Version>
+      <NoWarn>NU1701</NoWarn>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph">
+      <Version>3.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Identity.Client">
+      <Version>4.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>7.0.0-preview4</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Sentry">
+      <Version>2.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.7.335</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\Component.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Containers\CustomMaxSizeBackgroundCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Containers\DocumentCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomCameraPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomInkCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FileManagement\CustomFileGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FileManagement\FileLabelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ImageEditing\AnalyzedImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\CustomColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\CustomFontSizeInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\CustomShortcutEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\EditableCustomEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Pages\CustomContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomDesmosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Pages\CustomPageContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Sidebar\Content\SidebarContentResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Sidebar\CustomSidebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Toolbar\MDToolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\AboutScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\CameraScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\EditorScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\FeedbackScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\FileManagerScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\ImageEditorScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\SettingsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\contrast-high\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AINotesCloud\AINotesCloud.csproj">
+      <Project>{0a83a562-22e7-43e8-b47d-b8cd9c40feb6}</Project>
+      <Name>AINotesCloud</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{97f1699f-5471-4eec-852c-68bfe49f4d95}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaterialComponents\MaterialComponents.csproj">
+      <Project>{658bac1d-4f6a-4015-89ed-d6f24602c926}</Project>
+      <Name>MaterialComponents</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

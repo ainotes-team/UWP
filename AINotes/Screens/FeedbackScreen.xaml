@@ -1,0 +1,34 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.FeedbackScreen"
+    x:Uid="/Screens_FeedbackScreen/Self"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages"
+    xmlns:materialComponents="using:MaterialComponents">
+    
+    <Grid Padding="0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Padding="10">
+            <TextBox x:Name="FeedbackField" PlaceholderText="Your Feedback" Height="300" AcceptsReturn="True" />
+            <StackPanel Orientation="Horizontal" Spacing="0">
+                <materialComponents:MDCheckBox x:Name="IncludeLogsCheckBox" Text="Include Logs" />
+                <materialComponents:MDLabel x:Name="UserIDLabel" VerticalAlignment="Center" />
+            </StackPanel>
+            <materialComponents:MDButton x:Name="SendButton" Text="Send" Click="OnSendButtonPressed" />
+        </StackPanel>
+        
+        <Frame Grid.Row="0" Grid.Column="1" BorderBrush="Black" />
+        
+        <StackPanel Grid.Row="0" Grid.Column="2" Padding="10">
+            <materialComponents:MDLabel Text="Contact us / Support" FontSize="24" />
+            <StackPanel x:Name="ContactOptionsPanel" />
+        </StackPanel>
+        
+    </Grid>
+    
+</pages:CustomPageContent>

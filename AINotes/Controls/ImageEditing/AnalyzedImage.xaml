@@ -1,0 +1,11 @@
+﻿<controls1:CustomFrame
+    x:Class="AINotes.Controls.ImageEditing.AnalyzedImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls1="using:Helpers.Controls"
+    Margin="10"
+    Padding="0"
+    BorderThickness="2">
+    
+    <Image x:Name="DisplayImage" />
+</controls1:CustomFrame>

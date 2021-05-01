@@ -1,0 +1,27 @@
+﻿<pages:CustomPageContent
+    x:Class="AINotes.Screens.FileManagerScreen"
+    x:Uid="/Screens_FileManagerScreen/Self"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:AINotes.Controls.Pages"
+    xmlns:fm="using:AINotes.Controls.FileManagement"
+    xmlns:md="using:MaterialComponents">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="32" BorderBrush="#E0E0E0" BorderThickness="0 0 0 1">
+            <md:MDToolbarItem ImageSource="/Assets/Images/icons8_filter_48.png" x:Name="ResetFilterTBI" 
+                                  VerticalAlignment="Center" 
+                                  Padding = "0 2 0 2" Margin="16 0 16 0" HandleTouch="True" 
+                                  Width="24" Height="24" Background="Transparent" CornerRadius="15" />
+            <md:MDChipGroup x:Name="FilterChips" />
+        </StackPanel>
+        <fm:CustomFileGridView x:Name="FileContainer" Grid.Row="2" Mode="List" />
+    </Grid>
+    
+</pages:CustomPageContent>
