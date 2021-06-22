@@ -16,6 +16,10 @@ namespace AINotes.Helpers.Geometry {
             Y = y;
         }
 
+        public static GeometryPoint NaP() {
+            return new GeometryPoint(double.NaN, double.NaN);
+        }
+
         public (double, double) GetPosition() => (X, Y);
             
         public void AlignToGrid() {

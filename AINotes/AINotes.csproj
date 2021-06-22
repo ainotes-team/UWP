@@ -154,6 +154,7 @@
     <Compile Include="Components\Tools\SelectionComponentTool.cs" />
     <Compile Include="Components\Tools\SimpleTool.cs" />
     <Compile Include="Components\Tools\TextComponentTool.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Controls\Containers\CustomMaxSizeBackgroundCanvas.xaml.cs">
       <DependentUpon>CustomMaxSizeBackgroundCanvas.xaml</DependentUpon>
     </Compile>
@@ -211,7 +212,6 @@
     <Compile Include="Controls\Sidebar\Content\SidebarContentResources.xaml.cs">
       <DependentUpon>SidebarContentResources.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Configuration.cs" />
     <Compile Include="Controls\FileManagement\CustomFileGridView.xaml.cs">
       <DependentUpon>CustomFileGridView.xaml</DependentUpon>
     </Compile>
@@ -246,6 +246,7 @@
     <Compile Include="Helpers\Geometry\GeometryPoint.cs" />
     <Compile Include="Helpers\Geometry\GeometryPolyline.cs" />
     <Compile Include="Helpers\Geometry\GeometryRectangle.cs" />
+    <Compile Include="Helpers\Geometry\GeometryStraight.cs" />
     <Compile Include="Helpers\Geometry\GeometryVector.cs" />
     <Compile Include="Helpers\Geometry\GeometryVector2.cs" />
     <Compile Include="Helpers\Geometry\GeometryVector3.cs" />

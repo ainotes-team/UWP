@@ -5,6 +5,7 @@ using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Helpers;
 
 namespace AINotes.Helpers.Geometry {
     public static class Geometry {
@@ -136,16 +137,16 @@ namespace AINotes.Helpers.Geometry {
 
         // returns intersection position of two
         // lines in 2D
-        public static (int, int) GetIntersection(int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3) {
+        public static GeometryPoint GetIntersection(int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3) {
             try {
                 var px = ((x0 * y1 - y0 * x1) * (x2 - x3) - (x0 - x1) * (x2 * y3 - y2 * x3)) / ((x0 - x1) * (y2 - y3) - (y0 - y1) * (x2 - x3));
                 var py = ((x0 * y1 - y0 * x1) * (y2 - y3) - (y0 - y1) * (x2 * y3 - y2 * x3)) / ((x0 - x1) * (y2 - y3) - (y0 - y1) * (x2 - x3));
-                return (px, py);
+                return new GeometryPoint(px, py);
             } catch (Exception) {
                 // ignored
             }
         
-            return (0, 0);
+            return GeometryPoint.NaP();
         }
         
         public static GeometryPoint GetIntersection(GeometryPoint p0, GeometryPoint p1, GeometryPoint p2, GeometryPoint p3) {
@@ -160,12 +161,24 @@ namespace AINotes.Helpers.Geometry {
             } catch (Exception) {
                 // ignored
             }
+
+            return GeometryPoint.NaP();
+        }
         
-            return new GeometryPoint(0, 0);
+        public static GeometryPoint GetIntersection(GeometryStraight geometryStraight0, GeometryStraight geometryStraight1) {
+            try {
+                var x = (geometryStraight0.B - geometryStraight1.B) / (geometryStraight1.M - geometryStraight0.M);
+                var y = geometryStraight0.M * x + geometryStraight0.B;
+                return new GeometryPoint(x, y);
+            } catch (Exception) {
+                // ignored
+            }
+        
+            return GeometryPoint.NaP();
         }
         
         // returns whether or not two lines intersect in 2D space
-        public static bool FindLineIntersection(GeometryPoint lineStart0, GeometryPoint lineEnd0, GeometryPoint lineStart1, GeometryPoint lineEnd1) {
+        public static bool HasIntersection(GeometryPoint lineStart0, GeometryPoint lineEnd0, GeometryPoint lineStart1, GeometryPoint lineEnd1) {
             // use two-dimensional vectors to check for intersection
             var p = new[] { lineStart0.X, lineStart0.Y, lineEnd0.X - lineStart0.X, lineEnd0.Y - lineStart0.Y, lineStart1.X, lineStart1.Y, lineEnd1.X - lineStart1.X, lineEnd1.Y - lineStart1.Y };
 
@@ -177,8 +190,12 @@ namespace AINotes.Helpers.Geometry {
             return !(s < 0) && !(s > 1);
         }
         
-        public static bool FindLineIntersection(GeometryLine geometryLine0, GeometryLine geometryLine1) {
-            return FindLineIntersection(geometryLine0.P0, geometryLine0.P1, geometryLine1.P0, geometryLine1.P1);
+        public static bool HasIntersection(GeometryLine geometryLine0, GeometryLine geometryLine1) {
+            return HasIntersection(geometryLine0.P0, geometryLine0.P1, geometryLine1.P0, geometryLine1.P1);
+        }
+        
+        public static bool HasIntersection(GeometryStraight geometryStraight0, GeometryStraight geometryStraight1) {
+            return GetIntersection(geometryStraight0, geometryStraight0) != GeometryPoint.NaP();
         }
         
         // returns whether or not two polylines intersect in 2D space
@@ -202,7 +219,7 @@ namespace AINotes.Helpers.Geometry {
 
                     // checking for intersection between the two pieces of the two polylines
                     // that are generated through the iteration
-                    if (FindLineIntersection(lastPoint0, inkPoint0, lastPoint1, inkPoint1)) return true;
+                    if (HasIntersection(lastPoint0, inkPoint0, lastPoint1, inkPoint1)) return true;
                     lastPoint1 = inkPoint1;
                 }
 
