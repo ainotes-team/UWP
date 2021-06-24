@@ -139,7 +139,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CloudAdapter.cs" />
     <Compile Include="Components\Component.controller.cs">
       <DependentUpon>Component.xaml</DependentUpon>
     </Compile>
@@ -235,7 +234,6 @@
     </Compile>
     <Compile Include="Helpers\Clipboard.cs" />
     <Compile Include="Helpers\ClipboardManager.cs" />
-    <Compile Include="Helpers\Converters\UserIdToNameConverter.cs" />
     <Compile Include="Helpers\ExtensionManager.cs" />
     <Compile Include="Helpers\Extensions\CanvasExtensions.cs" />
     <Compile Include="Helpers\Extensions\GeometryExtensions.cs" />
@@ -268,9 +266,6 @@
       <DependentUpon>LocalSharingHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LocalSharingHelper.cs" />
-    <Compile Include="Helpers\Merging\ComponentMerger.cs" />
-    <Compile Include="Helpers\Merging\FileMerger.cs" />
-    <Compile Include="Helpers\Merging\StrokeMerger.cs" />
     <Compile Include="Helpers\PreferenceHelpers\BooleanPreference.cs" />
     <Compile Include="Helpers\PreferenceHelpers\CustomLabelListPreference.cs" />
     <Compile Include="Helpers\PreferenceHelpers\DoublePreference.cs" />
@@ -1634,6 +1629,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Images\contrast-high\" />
+    <Folder Include="Helpers\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">

@@ -17,16 +17,20 @@ namespace Helpers.Essentials {
             try {
                 // request store description containing the current store version string
                 var storeVersionString = await Task.Run(() => {
-                    var storePage = new HtmlWeb().Load("https://www.microsoft.com/de-de/p/ainotes/9ngx8jnlllcj/");
-                    var changelogText = storePage.DocumentNode.SelectSingleNode("//*[@id='product-description']")?.InnerHtml;
+                    try {
+                        var storePage = new HtmlWeb().Load("https://www.microsoft.com/de-de/p/ainotes/9ngx8jnlllcj/");
+                        var changelogText = storePage.DocumentNode.SelectSingleNode("//*[@id='product-description']")?.InnerHtml;
 
-                    if (changelogText == null) return null;
+                        if (changelogText == null) return null;
 
-                    var versionIdx = changelogText.LastIndexOf("Version", StringComparison.Ordinal);
-                    var changeString = changelogText.Substring(versionIdx, changelogText.Length - versionIdx);
-                    return changeString.Substring(0, changeString.IndexOf("(", StringComparison.InvariantCulture)).Replace(new [] {
-                        "\n", " ", "Version"
-                    }, "");
+                        var versionIdx = changelogText.LastIndexOf("Version", StringComparison.Ordinal);
+                        var changeString = changelogText.Substring(versionIdx, changelogText.Length - versionIdx);
+                        return changeString.Substring(0, changeString.IndexOf("(", StringComparison.InvariantCulture)).Replace(new [] {
+                            "\n", " ", "Version"
+                        }, "");
+                    } catch (Exception) {
+                        return null;
+                    }
                 });
 
                 if (storeVersionString == null) return false;

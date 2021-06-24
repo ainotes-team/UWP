@@ -108,8 +108,7 @@ namespace AINotes {
                 
                 Configuration.Initialize();
                 Preferences.Initialize();
-
-                SynchronizationService.Initialize();
+                
                 LocalSharingHelper.Initialize();
 
                 // sys info

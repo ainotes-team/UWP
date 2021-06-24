@@ -55,7 +55,7 @@ namespace AINotes {
                                             }
 
                                             if (!success) {
-                                                new MDContentPopup("Fehler", new MDLabel("Die angegeben URI konnte nicht gefunden werden.")).Show();
+                                                new MDContentPopup("Error", new MDLabel("The given URI does not work.")).Show();
                                             } else {
                                                 switch (args.PreviousExecutionState) {
                                                     case ApplicationExecutionState.Running: {
@@ -105,70 +105,15 @@ namespace AINotes {
                                                         }
                                                     }
                                                 } else {
+                                                    // TODO
                                                     // otherwise download the file with the given remote id
                                                     Logger.Log("[App]", "Opening Remote File - Downloading");
-                                                    if (SynchronizationService.CloudApi == null) {
-                                                        Logger.Log("[App]", "Opening Remote File - Error: SynchronizationService.CloudApi == null", logLevel: LogLevel.Warning);
-                                                        new MDContentPopup("Fehler", new MDLabel("SynchronizationService.CloudApi == null")).Show();
-                                                        return;
-                                                    }
-                                                
-                                                    // convert to FileModel
-                                                    // var newToLocal = (await SynchronizationService.CloudApi.GetFile(fileId)).ToLocal();
-                                                    // Logger.Log("newToLocal", newToLocal);
-                                                    // newToLocal.LastSynced = newToLocal.LastChangedDate;
-                                                    //
-                                                    // // create local file
-                                                    // var newLocalFileId = await FileHelper.CreateFileAsync(newToLocal);
-                                                    // await FileHelper.SetLastSynced(newToLocal);
-                                                    // Logger.Log("newLocalFileId", newLocalFileId);
-                                                    //
-                                                    // // create components
-                                                    // var remoteComponents = await SynchronizationService.CloudApi.GetRemoteComponents(newToLocal.RemoteId);
-                                                    //
-                                                    // Logger.Log("create", remoteComponents.Count, "components");
-                                                    // foreach (var remoteComponent in remoteComponents) {
-                                                    //     var toLocal = await remoteComponent.ToLocalAsync(newLocalFileId);
-                                                    //
-                                                    //     var toLocalPlId = await FileHelper.CreateComponentAsync(toLocal);
-                                                    //     toLocal.ComponentId = toLocalPlId;
-                                                    //
-                                                    //     // get remote image if documentComponent
-                                                    //     // ReSharper disable once InvertIf
-                                                    //     if (toLocal.Type == "DocumentComponent") {
-                                                    //         var contentPath = ImageComponent.GetImageSavingPathStatic(toLocalPlId);
-                                                    //         await SynchronizationService.CloudApi.DownloadImage(remoteComponent.Content, contentPath);
-                                                    //         toLocal.Content = contentPath;
-                                                    //
-                                                    //         await FileHelper.UpdateComponentAsync(toLocal);
-                                                    //     }
-                                                    // }
-                                                    //
-                                                    // Logger.Log("open");
-                                                    // switch (args.PreviousExecutionState) {
-                                                    //     case ApplicationExecutionState.Running: {
-                                                    //         if (Page.Content != EditorScreen) Page.Load(EditorScreen);
-                                                    //         EditorScreen.LoadFile(newLocalFileId);
-                                                    //         break;
-                                                    //     }
-                                                    //     case ApplicationExecutionState.NotRunning: {
-                                                    //         void LoadFile(object _, object __) {
-                                                    //             FileManagerScreen.Loaded -= LoadFile;
-                                                    //             if (Page.Content != EditorScreen) Page.Load(EditorScreen);
-                                                    //             EditorScreen.LoadFile(newLocalFileId);
-                                                    //         }
-                                                    //
-                                                    //         
-                                                    //         FileManagerScreen.Loaded += LoadFile;
-                                                    //         break;
-                                                    //     }
-                                                    // }
                                                 }
                                             } else {
-                                                new MDContentPopup("Fehler", new MDLabel("Die angegeben URI konnte nicht gefunden werden.")).Show();
+                                                new MDContentPopup("Error", new MDLabel("The given URI does not work.")).Show();
                                             }
                                         } catch (Exception ex) {
-                                            new MDContentPopup("Fehler", new MDLabel("Die angegeben URI konnte nicht geöffnet werden.")).Show();
+                                            new MDContentPopup("Error", new MDLabel("The given URI does not work..")).Show();
                                             Logger.Log("[App]", "OnActivated ainotes:remote protocol exception:", ex, logLevel: LogLevel.Error);
                                         }
 

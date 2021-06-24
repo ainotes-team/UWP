@@ -34,21 +34,5 @@ namespace AINotesCloud.Models {
 
             return result;
         }
-
-        public async Task<List<RemoteComponentModel>> GetRemoteComponentModels() {
-            return await SynchronizationService.CloudApi.GetRemoteComponents(RemoteId);
-        }
-
-        public static async Task<List<RemoteComponentModel>> GetRemoteComponentModels(string remoteId) {
-            return await SynchronizationService.CloudApi.GetRemoteComponents(remoteId);
-        }
-
-        public async Task<List<RemoteFilePermission>> GetRemotePermissionModels() {
-            return await SynchronizationService.CloudApi.GetRemotePermissions(RemoteId);
-        }
-
-        public static async Task<List<RemoteFilePermission>> GetRemotePermissionModels(string remoteId) {
-            return await SynchronizationService.CloudApi.GetRemotePermissions(remoteId);
-        }
     }
 }

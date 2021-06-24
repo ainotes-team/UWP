@@ -5,12 +5,10 @@
     xmlns:models="using:AINotes.Models"
     xmlns:fileManagement="using:AINotes.Controls.FileManagement"
     xmlns:converters="using:Helpers.Converters"
-    xmlns:md="using:MaterialComponents"
-    xmlns:localConverters="using:AINotes.Helpers.Converters">
+    xmlns:md="using:MaterialComponents">
 
     <UserControl.Resources>
         <converters:TimestampToStringConverter x:Key="TimestampToStringConverter" />
-        <localConverters:UserIdToNameConverter x:Key="UserIdToNameConverter" />
         
         <DataTemplate x:Name="GridModeTemplate" x:DataType="models:FileModel">
            <Grid Width="160" Height="160">
@@ -58,7 +56,7 @@
                 <TextBlock Foreground="#444444" Grid.Column="1"  Padding="16 0 16 0" Margin="0 -2 0 0"
                             TextTrimming="CharacterEllipsis" MaxWidth="250" MaxLines="1"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
-                            Text="{Binding Owner, Converter={StaticResource UserIdToNameConverter}}" x:Name="OwnerName"/>
+                            Text="{Binding Owner}" x:Name="OwnerName"/>
                 <TextBlock Foreground="#444444" Grid.Column="2"  Padding="16 0 16 0" Margin="0 -2 0 0"
                             TextTrimming="CharacterEllipsis" Width="250"
                             HorizontalAlignment="Left" VerticalAlignment="Center"

@@ -7,9 +7,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using AINotes.Controls.Pages;
 using AINotes.Helpers;
-using AINotes.Helpers.Extensions;
-using AINotes.Helpers.Imaging;
-using AINotes.Helpers.Merging;
 using Helpers;
 using Helpers.Essentials;
 using Helpers.Extensions;
@@ -51,68 +48,13 @@ namespace AINotes.Screens {
 
             FileHelper.FileChanged += UpdateFiles;
             FileHelper.DirectoryChanged += UpdateDirectories;
-
-            FileMerger.ApprovalRequested += OnRemoteFileApprovalRequested;
-
+            
             Logger.Log("[FileManagerScreen]", "<- Constructor", logLevel: LogLevel.Debug);
         }
 
         // update the file list when updated
         private void UpdateFiles(FileModel model, ChangeType changeType) => LoadFiles();
         private void UpdateDirectories(DirectoryModel model, ChangeType changeType) => LoadDirectories();
-        
-        // update the profile picture
-        private void OnAccountChanged() {
-            if (App.Page.Content != this) return;
-            if (App.Page.PrimaryToolbarChildren.Count == 0) return;
-            
-            void OnCloudItemClicked(object sender, EventArgs eventArgs) {
-                if (CloudAdapter.IsLoggedIn) {
-                    OpenAccountOptionsDropdown(sender);
-                } else {
-                    OpenCloudLoginPopup();
-                }
-            }
-
-            var profileToolbarItem = (MDToolbarItem) App.Page.PrimaryToolbarChildren[1];
-            var cloudStatusToolbarItem = (MDToolbarItem) App.Page.PrimaryToolbarChildren[3];
-
-            cloudStatusToolbarItem.Pressed -= OnCloudItemClicked;   
-            cloudStatusToolbarItem.Pressed += OnCloudItemClicked;
-
-            if (CloudAdapter.IsLoggedIn) {
-                // update the picture
-                profileToolbarItem.SetProfilePicture(CloudAdapter.CurrentRemoteUserModel.RemoteId);
-                // update the status icon
-                cloudStatusToolbarItem.ImageSource = ImageSourceHelper.FromName(Icon.CloudOk);
-            } else {
-                // update the status icon
-                cloudStatusToolbarItem.ImageSource = ImageSourceHelper.FromName(Icon.CloudError);
-            }
-        }
-
-        private void OpenAccountOptionsDropdown(object sender) {
-            CustomDropdown.ShowDropdown(new List<CustomDropdownViewTemplate> {
-                new CustomDropdownItem("Account", OpenManageAccountPopup, Icon.Account),
-                new CustomDropdownItem("Invitations", OpenManageInvitationsPopup, FileMerger.Invitations.Count > 0 ? Icon.IncomingMessage : Icon.EmptyMailingBox),
-                new CustomDropdownItem("Reconnect", CloudAdapter.Restart, Icon.Reload),
-                new CustomDropdownItem("Logout", CloudAdapter.Logout, Icon.Exit),
-                new CustomDropdownItem("Change Account", OpenCloudLoginPopup, Icon.AccountGroup),
-            }, sender as MDToolbarItem);
-        }
-
-        private void OnRemoteFileApprovalRequested() {
-            MainThread.BeginInvokeOnMainThread(() => {
-                var cloudStatusToolbarItem = (MDToolbarItem) App.Page.PrimaryToolbarChildren[3];
-
-                if (FileMerger.Invitations.Count > 0) {
-                    cloudStatusToolbarItem.ImageSource = Preferences.UseAnimatedIcons ? ImageSourceHelper.FromName(Icon.MailboxAnimated) : ImageSourceHelper.FromName(Icon.Mailbox);
-                } else {
-                    cloudStatusToolbarItem.ImageSource = ImageSourceHelper.FromName(Icon.CloudOk);
-                    cloudStatusToolbarItem.BorderBrush = null;
-                }
-            });
-        }
         
         // load content properties
         private async void InitializeComponentProperties() {
@@ -172,14 +114,6 @@ namespace AINotes.Screens {
                     CustomDropdown.CloseDropdown();
                     OpenAppInfoPopup();
                 }, Icon.Info),
-                new CustomDropdownItem("Profile", () => {
-                    CustomDropdown.CloseDropdown();
-                    if (CloudAdapter.IsLoggedIn) {
-                        OpenManageAccountPopup();
-                    } else {
-                        OpenCloudLoginPopup();
-                    }
-                }, Icon.Account),
             }, _profilePictureTBI);
         }
 
@@ -297,9 +231,6 @@ namespace AINotes.Screens {
             // set title & profile picture
             App.Page.Title = "FileManager";
             
-            OnAccountChanged();
-            CloudAdapter.AccountChanged += () => MainThread.BeginInvokeOnMainThread(OnAccountChanged);
-
             // back button action
             Action backButtonAction = null;
             if (CurrentDirectory != null && CurrentDirectory.DirectoryId != 0) {

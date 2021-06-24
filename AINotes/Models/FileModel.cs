@@ -146,13 +146,7 @@ namespace AINotes.Models {
         [Ignore]
         [JsonIgnore]
         public string Status {
-            get => RemoteId != null
-                ? LastSynced == LastChangedDate 
-                    ? "Synced" 
-                    : SynchronizationService.IsRunning 
-                        ? "Syncing..."
-                        : "Waiting for connection..." 
-                : "Saved locally";
+            get => "Saved locally";
             set {}
         }
 

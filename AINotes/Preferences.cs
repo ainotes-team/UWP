@@ -161,7 +161,7 @@ namespace AINotes {
             }
         });
         public static readonly IntegerPreference DoubleTapTime = new IntegerPreference("LanguageStrings.SDoubleTapTimeInMs", 500);
-        public static readonly StringPreference ServerUrl = new StringPreference("LanguageStrings.SSynchronizationServer", "https://srv1.ainotes.xyz", () => SynchronizationService.Restart());
+        public static readonly StringPreference ServerUrl = new StringPreference("LanguageStrings.SSynchronizationServer", "http://192.168.50.129:3000/", () => Logger.Log("Changed server address to ", ServerUrl));
 
         // backup & restore
         public static readonly InvocationPreference CreateBackup = new InvocationPreference("Create Backup", () => {

@@ -44,7 +44,7 @@ namespace AINotes.Models {
                 var res = new [] {r, g, b};
                 writer.WriteValue(res.Serialize());
             } else {
-                throw new NotImplementedException();
+                throw new Exception("Object value is not a color");
             }
         }
         

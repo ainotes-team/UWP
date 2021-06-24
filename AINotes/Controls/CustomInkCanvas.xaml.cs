@@ -681,9 +681,9 @@ namespace AINotes.Controls {
             RemoveSelectionRectangle();
 
             _lasso = new Polyline {
-                Stroke = new SolidColorBrush(Colors.DarkSlateGray),
-                StrokeThickness = 1,
-                StrokeDashArray = new DoubleCollection {10, 1}
+                Stroke = new SolidColorBrush(Colors.Blue),
+                StrokeThickness = 2,
+                StrokeDashArray = new DoubleCollection {2, 2}
             };
 
             _lasso.Points?.Add(args.CurrentPoint.RawPosition);
@@ -1127,13 +1127,16 @@ namespace AINotes.Controls {
             UserActionManager.AddUserAction(new UserAction(options => {
                 var inkStrokeIds = (int[]) options["inkStrokeIds"];
 
-                // TODO: fix bug using AddStrokes
+                var strokesToAdd = new List<InkStroke>();
+
                 foreach (var inkStrokeId in inkStrokeIds) {
                     var inkStroke = GetInkStrokeById(inkStrokeId);
                     var newInkStroke = inkStroke.Clone();
                     UpdateInkStrokeObject(newInkStroke, inkStrokeId);
-                    InkPresenter.StrokeContainer.AddStroke(newInkStroke);
+                    strokesToAdd.Add(newInkStroke);
                 }
+                
+                InkPresenter.StrokeContainer.AddStrokes(strokesToAdd);
             }, options => {
                 var inkStrokeIds = (int[]) options["inkStrokeIds"];
 
@@ -1152,16 +1155,19 @@ namespace AINotes.Controls {
 
                 foreach (var inkStroke in InkPresenter.StrokeContainer.GetStrokes()) inkStroke.Selected = false;
 
-                // TODO: fix bug using AddStrokes
+                
+                var strokesToAdd = new List<InkStroke>();
+                
                 if (inkStrokeIds != null)
                     foreach (var (strokeId, convertedId) in inkStrokeIds) {
                         GetInkStrokeById(convertedId).Selected = true;
                         var inkStroke = GetInkStrokeById(strokeId);
                         var newInkStroke = inkStroke.Clone();
                         UpdateInkStrokeObject(newInkStroke, strokeId);
-                        InkPresenter.StrokeContainer.AddStroke(newInkStroke);
+                        strokesToAdd.Add(newInkStroke);
                     }
 
+                InkPresenter.StrokeContainer.AddStrokes(strokesToAdd);
                 InkPresenter.StrokeContainer.DeleteSelected();
             }, options => {
                 var inkStrokeIds = options["inkStrokePairIds"] as Dictionary<int, int>;
