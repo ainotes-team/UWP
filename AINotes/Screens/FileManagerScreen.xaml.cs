@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using AINotes.Controls.Pages;
 using AINotes.Helpers;
@@ -12,6 +15,7 @@ using Helpers.Essentials;
 using Helpers.Extensions;
 using AINotes.Models;
 using MaterialComponents;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using SortByMode = AINotes.Controls.FileManagement.SortByMode;
 
 namespace AINotes.Screens {
@@ -36,6 +40,18 @@ namespace AINotes.Screens {
             ImageSource = new BitmapImage(new Uri(Icon.AddFile)),
             AutomationName = "AddFileTBI",
             ToolTip = "Create File"
+        };
+        
+        private readonly MDToolbarItem _shareFilesTBI = new MDToolbarItem {
+            ImageSource = new BitmapImage(new Uri(Icon.SharedDocument)),
+            AutomationName = "ShareFilesTBI",
+            ToolTip = "Share file(s)"
+        };
+
+        private readonly MDToolbarItem _deleteSelectedTBI = new MDToolbarItem {
+            ImageSource = new BitmapImage(new Uri(Icon.TrashCan)),
+            AutomationName = "DeleteSelectedTBI",
+            ToolTip = "Delete Selection"
         };
         
         public FileManagerScreen() {
@@ -74,6 +90,9 @@ namespace AINotes.Screens {
             _createFileTBI.Pressed += (_, _) => OpenFileCreationPopup(CurrentDirectory.DirectoryId);
             _createFolderTBI.Pressed += (_, _) => OpenFolderCreationPopup(CurrentDirectory.DirectoryId);
             
+            _shareFilesTBI.Pressed += (_, _) => OpenShareFilesPopup();
+            _deleteSelectedTBI.Pressed += (_, _) => DeleteShortcut();
+
             _profilePictureTBI.Pressed += OnProfilePictureTBIPressed;
             
             // set custom label filters
@@ -85,6 +104,8 @@ namespace AINotes.Screens {
             SizeChanged += (_, _) => (FilterChips.Width = ActualWidth - (24 + 32)).Clamp(0, double.MaxValue);
             
             Preferences.CustomLabels.LabelListChanged += async () => await LoadFilterChips();
+
+            FileContainer.ItemGrid.SelectionChanged += UpdateSelectionOptions;
             
             Logger.Log("[FileManagerScreen]", "<- LoadContentProperties", logLevel: LogLevel.Verbose);
         }
@@ -171,6 +192,20 @@ namespace AINotes.Screens {
 
             OnFilterChipSelectionChanged();
         }
+
+        public void UpdateSelectionOptions(object sender, SelectionChangedEventArgs selectionChangedEventArgs) {
+            MainThread.BeginInvokeOnMainThread(() => {
+                var visible = FileContainer.ItemGrid.SelectedItems.Count > 0;
+
+                if (visible) {
+                    _shareFilesTBI.Fade(1F, 200D).Start(); 
+                    _deleteSelectedTBI.Fade(1F, 200D).Start();
+                } else {
+                    _shareFilesTBI.Fade(0F, 200D).Start();
+                    _deleteSelectedTBI.Fade(0F, 200D).Start();
+                }
+            });
+        }
         
         private IEnumerable<UIElement> _primaryToolbarItems;
         public IEnumerable<UIElement> PrimaryToolbarItems => _primaryToolbarItems ??= new List<UIElement> {
@@ -185,6 +220,9 @@ namespace AINotes.Screens {
             new Frame { Width = 12 },
             _createFolderTBI,
             _createFileTBI,
+            new Frame { Width = 12 },
+            _shareFilesTBI,
+            _deleteSelectedTBI
         };
         
         // navigate to the given directory

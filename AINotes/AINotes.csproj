@@ -391,6 +391,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-100\icons8_user_account_48.png" />
@@ -409,6 +411,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-125\icons8_user_account_48.png" />
@@ -427,6 +431,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-150\icons8_user_account_48.png" />
@@ -445,6 +451,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-dark\scale-400\icons8_user_account_48.png" />
@@ -463,6 +471,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-100\icons8_user_account_48.png" />
@@ -481,6 +491,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-125\icons8_user_account_48.png" />
@@ -499,6 +511,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-150\icons8_user_account_48.png" />
@@ -517,6 +531,8 @@
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_mailing_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_arrow_down_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_arrow_up_48.png" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_star.gif" />
+    <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_star_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_synchronize_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_triangle_48.png" />
     <Content Include="Assets\Images\contrast-standard\theme-light\scale-400\icons8_user_account_48.png" />

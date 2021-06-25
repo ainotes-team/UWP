@@ -11,7 +11,7 @@ namespace AINotes {
             public static string People => BaseUrl.GetImages() + "icons8_white_people_48.png";
             public static string Star => BaseUrl.GetImages() + "icons8_white_star_filled_48.png";
         }
-        
+
         public static string Access => BaseUrl.GetImages() + "icons8_access_48.png";
         public static string Add => BaseUrl.GetImages() + "icons8_add_48.png";
         public static string AddFile => BaseUrl.GetImages() + "icons8_add_file_48.png";
@@ -116,9 +116,9 @@ namespace AINotes {
         public static string Info => BaseUrl.GetImages() + "icons8_info_48.png";
         public static string DatabaseImport => BaseUrl.GetImages() + "icons8_database_import_48.png";
         public static string Help => BaseUrl.GetImages() + "icons8_help_48.png";
-        public static string Mailbox => BaseUrl.GetImages() + "icons8_mailbox_48.png";
-        public static string MailboxAnimated => BaseUrl.GetImages() + "icons8_mailbox.gif";
-        
+        public static string Mailbox => BaseUrl.GetImages() + (Preferences.UseAnimatedIcons ? "icons8_mailbox.gif" : "icons8_mailbox_48.png");
+        public static string Star => BaseUrl.GetImages() + (Preferences.UseAnimatedIcons ? "icons8_star.gif" : "icons8_star_48.png");
+
         // Document Line Modes
         public static string Grid0 => BaseUrl.GetImages() + "grid0.png";
         public static string Grid1 => BaseUrl.GetImages() + "grid1.png";

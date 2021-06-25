@@ -647,5 +647,18 @@ namespace AINotes.Screens {
 
             fileNameEntry.Focus(FocusState.Programmatic);
         }
+
+        public void OpenShareFilesPopup() {
+            var popup = new MDPopup {
+                Title = ResourceHelper.GetString("share_file"),
+                Content = new Frame {
+                    Background = Configuration.Theme.Background,
+                    Margin = new Thickness(15),
+                    Content = new MDShareView()
+                }
+            };
+            
+            PopupNavigation.OpenPopup(popup);
+        }
     }
 }
