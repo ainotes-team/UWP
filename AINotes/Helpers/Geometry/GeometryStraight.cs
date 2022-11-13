@@ -1,36 +1,29 @@
-﻿using System;
+﻿namespace AINotes.Helpers.Geometry; 
 
-namespace AINotes.Helpers.Geometry {
-    public class GeometryStraight {
-        public double M;
-        public double B;
+public class GeometryStraight {
+    public readonly double M;
+    public readonly double B;
 
-        public GeometryStraight(double m, double b) {
-            M = m;
-            B = b;
+    public GeometryStraight(GeometryPoint referencePoint, double m) {
+        M = m;
+        B = referencePoint.Y - m * referencePoint.X;
+    }
+
+    public override bool Equals(object obj) {
+        if (obj is GeometryStraight geometryStraight) {
+            return geometryStraight.M == M && geometryStraight.B == B;
         }
 
-        public GeometryStraight(GeometryPoint referencePoint, double m) {
-            M = m;
-            B = referencePoint.Y - m * referencePoint.X;
-        }
+        return false;
+    }
 
-        public override bool Equals(object obj) {
-            if (obj is GeometryStraight geometryStraight) {
-                return geometryStraight.M == M && geometryStraight.B == B;
-            }
+    protected bool Equals(GeometryStraight other) {
+        return M.Equals(other.M) && B.Equals(other.B);
+    }
 
-            return false;
-        }
-
-        protected bool Equals(GeometryStraight other) {
-            return M.Equals(other.M) && B.Equals(other.B);
-        }
-
-        public override int GetHashCode() {
-            unchecked {
-                return (M.GetHashCode() * 397) ^ B.GetHashCode();
-            }
+    public override int GetHashCode() {
+        unchecked {
+            return (M.GetHashCode() * 397) ^ B.GetHashCode();
         }
     }
 }

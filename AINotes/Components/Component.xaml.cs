@@ -325,7 +325,7 @@ namespace AINotes.Components {
         }
         
         protected void ResetTouchStartBounds() => TouchStartBounds = new RectangleD(-1, -1, -1, -1);
-        private Point LastKnownOnNobPosition = new Point();
+        private Point _lastKnownOnNobPosition;
         
         private void OnResizingNobTouch(object o, WTouchEventArgs args) {
             if (!args.InContact && args.ActionType != WTouchAction.Released) {
@@ -337,7 +337,7 @@ namespace AINotes.Components {
             switch (args.ActionType) {
                 case WTouchAction.Pressed:
                     CustomDropdown.CloseDropdown();
-                    LastKnownOnNobPosition = TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
+                    _lastKnownOnNobPosition = TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
                     TouchStartBounds = new RectangleD(_x, _y, GetWidth(), GetHeight());
 
                     IsResizing = true;
@@ -359,8 +359,8 @@ namespace AINotes.Components {
                             var newXOnNob = args.Location.X;
                             var newYOnNob = args.Location.Y;
 
-                            var startXOnNob = LastKnownOnNobPosition.X;
-                            var startYOnNob = LastKnownOnNobPosition.Y;
+                            // var startXOnNob = _lastKnownOnNobPosition.X;
+                            // var startYOnNob = _lastKnownOnNobPosition.Y;
 
                             var cursorStraight = new GeometryStraight(new GeometryPoint(newXOnNob, newYOnNob), cursorSlope);
                             var componentStraight = new GeometryStraight(new GeometryPoint(0, 0), componentSlope);
@@ -371,7 +371,7 @@ namespace AINotes.Components {
                                 width += intersection.X;
                                 height += intersection.Y;
 
-                                LastKnownOnNobPosition = new Point(newXOnNob, newYOnNob);
+                                _lastKnownOnNobPosition = new Point(newXOnNob, newYOnNob);
                             }
                         } else {
                             if (GetWidth() - (TouchTrackingStart.X - args.Location.X) >= MinWidth) {

@@ -11,13 +11,13 @@ using Helpers.Extensions;
 
 namespace AINotes.Helpers.Geometry {
     public class HoughTransform {
-        static int neighbourhoodSize = 4;
+        private const int NeighbourhoodSize = 4;
 
-        static int maxTheta = 180;
+        private const int MaxTheta = 180;
 
-        static double thetaStep = Math.PI / maxTheta;
+        private const double ThetaStep = Math.PI / MaxTheta;
 
-        protected int Width, Height;
+        protected readonly int Width, Height;
 
         protected int[,] HoughArray;
 
@@ -46,17 +46,17 @@ namespace AINotes.Helpers.Geometry {
 
             DoubleHeight = 2 * HoughHeight;
 
-            HoughArray = new int[maxTheta, DoubleHeight];
+            HoughArray = new int[MaxTheta, DoubleHeight];
 
             CenterX = Width / 2f;
             CenterY = Height / 2f;
 
             NumPoints = 0;
 
-            _sinCache = new double[maxTheta];
+            _sinCache = new double[MaxTheta];
             _cosCache = _sinCache.ToArray();
-            for (var t = 0; t < maxTheta; t++) {
-                var realTheta = t * thetaStep;
+            for (var t = 0; t < MaxTheta; t++) {
+                var realTheta = t * ThetaStep;
                 _sinCache[t] = Math.Sin(realTheta);
                 _cosCache[t] = Math.Cos(realTheta);
             }
@@ -72,7 +72,7 @@ namespace AINotes.Helpers.Geometry {
         }
 
         public void AddPoint(int x, int y) {
-            for (var t = 0; t < maxTheta; t+=1) {
+            for (var t = 0; t < MaxTheta; t+=1) {
                 var r = (int) ((x - CenterX) * _cosCache[t] + (y - CenterY) * _sinCache[t]);
 
                 r += HoughHeight;
@@ -94,28 +94,28 @@ namespace AINotes.Helpers.Geometry {
 
             bool br;
             
-            for (var t = 0; t < maxTheta; t++) {
-                for (var r = neighbourhoodSize; r < DoubleHeight - neighbourhoodSize; r++) {
+            for (var t = 0; t < MaxTheta; t++) {
+                for (var r = NeighbourhoodSize; r < DoubleHeight - NeighbourhoodSize; r++) {
                     br = false;
 
                     if (HoughArray[t, r] > threshold) {
                         var peak = HoughArray[t, r];
 
-                        for (var dx = -neighbourhoodSize; dx <= neighbourhoodSize; dx++) {
+                        for (var dx = -NeighbourhoodSize; dx <= NeighbourhoodSize; dx++) {
                             if (br) break;
-                            for (var dy = -neighbourhoodSize; dy <= neighbourhoodSize; dy++) {
+                            for (var dy = -NeighbourhoodSize; dy <= NeighbourhoodSize; dy++) {
                                 var dt = t + dx;
                                 var dr = r + dy;
                                 if (dt < 0)
-                                    dt = dt + maxTheta;
-                                else if (dt >= maxTheta) dt = dt - maxTheta;
+                                    dt = dt + MaxTheta;
+                                else if (dt >= MaxTheta) dt = dt - MaxTheta;
                                 if (HoughArray[dt, dr] > peak) {
                                     br = true;
                                 }
                             }
                         }
                         
-                        var theta = t * thetaStep;
+                        var theta = t * ThetaStep;
 
                         unfilteredLines.Add(new HoughLine(theta, r));
                     }
@@ -210,7 +210,7 @@ namespace AINotes.Helpers.Geometry {
 
         public int GetHighestValue() {
             var max = 0;
-            for (var t = 0; t < maxTheta; t++) {
+            for (var t = 0; t < MaxTheta; t++) {
                 for (var r = 0; r < DoubleHeight; r++) {
                     if (HoughArray[t, r] > max) {
                         max = HoughArray[t, r];
@@ -223,7 +223,7 @@ namespace AINotes.Helpers.Geometry {
 
         public void GetHoughArrayImage() {
             var max = GetHighestValue();
-            for (var t = 0; t < maxTheta; t+=5) {
+            for (var t = 0; t < MaxTheta; t+=5) {
                 for (int r = 0; r < DoubleHeight; r+=5) {
                     double value = 255 * ((double) HoughArray[t, r]) / max;
                     int v = 255 - (int) value;

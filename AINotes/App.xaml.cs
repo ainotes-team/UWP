@@ -25,7 +25,6 @@ using AINotes.Helpers;
 using AINotes.Models;
 using AINotesCloud;
 using MaterialComponents;
-using Sentry.Protocol;
 
 #if DEBUG
 using System.Diagnostics;
@@ -60,7 +59,7 @@ namespace AINotes {
 #if DEBUG
                 Environment = "debug",
 #else
-                Environment = "production",
+                Environment = "prod",
 #endif
                     
                 IsGlobalModeEnabled = true,

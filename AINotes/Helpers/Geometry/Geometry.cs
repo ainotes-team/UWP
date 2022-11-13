@@ -5,13 +5,9 @@ using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Helpers;
 
 namespace AINotes.Helpers.Geometry {
     public static class Geometry {
-        // maximum double value represents infinity
-        static double INF = double.MaxValue;
-
         // Given three collinear points p, q, r,  
         // the function checks if point q lies 
         // on line segment 'pr' 
@@ -90,8 +86,9 @@ namespace AINotes.Helpers.Geometry {
                 return false;
             }
 
-            // Create a point for line segment from p to infinite 
-            var extreme = new GeometryPoint(INF, p.Y);
+            // Create a point for line segment from p to infinite
+            // TODO: use double.Infinity?
+            var extreme = new GeometryPoint(double.MaxValue, p.Y);
 
             // Count intersections of the above line  
             // with sides of polygon 

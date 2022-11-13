@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Windows.Storage.Streams;
 using AINotes.Components;
 using AINotes.Components.Implementations;
 using AINotes.Models;
@@ -12,8 +11,6 @@ using AINotesCloud;
 using AINotesCloud.Models;
 using Helpers;
 using Helpers.Essentials;
-using Microsoft.Graph;
-using File = System.IO.File;
 
 namespace AINotes.Helpers.Merging {
     public static class ComponentMerger {

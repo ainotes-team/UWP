@@ -31,7 +31,12 @@ namespace AINotes.Helpers {
                 // deserialize
                 hint.Update("Deserializing...");
                 var newFileModel = JsonConvert.DeserializeObject<FileModel>(newFile);
-                var newFileComponents = JsonConvert.DeserializeObject<List<ComponentModel>>(newFileModel.ComponentModels);
+                if (newFileModel == null) {
+                    Logger.Log("[LocalSharingHelper]", $"Receiver: Received Invalid FileModel", logLevel: LogLevel.Warning);
+                    hint.Update("Error:\nDeserialisierung fehlgeschlagen.");
+                    return;
+                }
+                var newFileComponents = JsonConvert.DeserializeObject<List<ComponentModel>>(newFileModel.ComponentModels) ?? new List<ComponentModel>();
 
                 // create file
                 hint.Update("Creating file...");

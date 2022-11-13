@@ -47,7 +47,7 @@ namespace AINotes.Controls.Sidebar.Content {
             var files = await FileHelper.ListFilesReducedAsync();
             files.Sort((x, y) => x.LastChangedDate.CompareTo(y.LastChangedDate));
             files.Reverse();
-            files.GetRange(0, Math.Min(Preferences.MaxRecentFilesShown, files.Count));
+            files = files.GetRange(0, Math.Min(Preferences.MaxRecentFilesShown, files.Count));
             _documentList.ModelCollection.AddRange(files);
         }
     }

@@ -12,6 +12,9 @@ using static System.Int32;
 namespace Helpers {
     public static class SystemInfo {
         private static readonly Dictionary<string, string> WindowsVersionDict = new Dictionary<string, string> {
+            {"6.2.9200", "Windows 8"},
+            {"6.3.9600", "Windows 8.1"},
+            
             {"10.0.18363", "Windows 10 1909"},
             {"10.0.18362", "Windows 10 1903"},
             {"10.0.17763", "Windows 10 1809"},
@@ -21,6 +24,30 @@ namespace Helpers {
             {"10.0.14393", "Windows 10 1607"},
             {"10.0.10586", "Windows 10 1511"},
             {"10.0.10240", "Windows 10 1507"},
+            
+            {"6.3.9600", "Windows Server 2012 R2"},
+            {"10.0.14393", "Windows Server 2016, Version 1607"},
+            {"10.0.17763", "Windows Server 2019, Version 1809"},
+            {"10.0.18363", "Windows Server, Version 1909"},
+            {"10.0.19041", "Windows Server, Version 2004"},
+            {"10.0.19042", "Windows Server, Version 20H2"},
+            {"10.0.20348", "Windows Server 2022"},
+            
+            {"10.0.10240", "Windows 10, Version 1507"},
+            {"10.0.10586", "Windows 10, Version 1511"},
+            {"10.0.14393", "Windows 10, Version 1607"},
+            {"10.0.15063", "Windows 10, Version 1703"},
+            {"10.0.16299", "Windows 10, Version 1709"},
+            {"10.0.17134", "Windows 10, Version 1803"},
+            {"10.0.17763", "Windows 10, Version 1809"},
+            {"10.0.18362", "Windows 10, Version 1903"},
+            {"10.0.18363", "Windows 10, Version 1909"},
+            {"10.0.19041", "Windows 10, Version 2004"},
+            {"10.0.19042", "Windows 10, Version 20H2"},
+            {"10.0.19043", "Windows 10, Version 21H1"},
+            {"10.0.19044", "Windows 10, Version 21H2"},
+            
+            {"10.0.22000", "Windows 11, Version 21H2"},
         };
         
         public static string GetSystemVersion(string versionString) {

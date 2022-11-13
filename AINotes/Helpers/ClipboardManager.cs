@@ -48,7 +48,7 @@ namespace AINotes.Helpers {
                         App.EditorScreen.AddContentComponent(model.ToComponent());
                     }
 
-                    var userAction = App.EditorScreen.PasteStrokes(position);
+                    App.EditorScreen.PasteStrokes(position);
                     return;
                 case ClipboardContentType.Image: {
                     Logger.Log("[EditorScreen]", "PasteShortcut: ClipboardContentType.Image");
