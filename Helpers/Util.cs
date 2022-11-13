@@ -55,6 +55,10 @@ namespace Helpers {
             return WindowsVersionDict.ContainsKey(versionString) ? WindowsVersionDict[versionString] : "Unknown Version";
         }
 
+        public static string GetSimpleSystemVersion(string versionString) {
+            return $"Windows {versionString.Split(".").FirstOrDefault()}";
+        } 
+
         public static void LogInfo() {
             Logger.Log("[DeviceInfo]", "Idiom:               ", DeviceInfo.Idiom, logLevel: LogLevel.Debug);
             Logger.Log("[DeviceInfo]", "Platform:            ", DeviceInfo.Platform, logLevel: LogLevel.Debug);

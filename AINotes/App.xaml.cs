@@ -53,7 +53,7 @@ namespace AINotes {
             InitializeComponent();
             
             // init sentry
-            SentrySdk.Init(new SentryOptions {
+            var sentryOptions = new SentryOptions {
                 Dsn = Configuration.LicenseKeys.Sentry,
                 Release = AppInfo.VersionString,
 #if DEBUG
@@ -61,20 +61,22 @@ namespace AINotes {
 #else
                 Environment = "prod",
 #endif
-                    
+
                 IsGlobalModeEnabled = true,
                 SendDefaultPii = true,
                 AutoSessionTracking = true,
                 MaxBreadcrumbs = 50,
-                
+
                 AttachStacktrace = true,
                 StackTraceMode = StackTraceMode.Enhanced,
-                
+
                 TracesSampleRate = 1.0,
-            });
+            };
+            sentryOptions.DisableTaskUnobservedTaskExceptionCapture();
+            SentrySdk.Init(sentryOptions);
             
             SentrySdk.ConfigureScope(scope => {
-                scope.Contexts.OperatingSystem.Name = "Windows 10/11";
+                scope.Contexts.OperatingSystem.Name = SystemInfo.GetSimpleSystemVersion(DeviceInfo.VersionString);
                 scope.Contexts.OperatingSystem.Version = SystemInfo.GetSystemVersion(DeviceInfo.VersionString);
                 scope.Contexts.OperatingSystem.Build = DeviceInfo.VersionString;
 
