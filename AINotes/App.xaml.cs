@@ -77,7 +77,7 @@ namespace AINotes {
             sentryOptions.DisableAppDomainUnhandledExceptionCapture();
 #endif
             SentrySdk.Init(sentryOptions);
-            
+            SentrySdk.StartSession();
             SentrySdk.ConfigureScope(scope => {
                 scope.Contexts.OperatingSystem.Name = SystemInfo.GetSimpleSystemVersion(DeviceInfo.VersionString);
                 scope.Contexts.OperatingSystem.Version = SystemInfo.GetSystemVersion(DeviceInfo.VersionString);
@@ -299,6 +299,7 @@ namespace AINotes {
             Logger.Log("[App]", "OnCloseRequested");
             var deferral = e.GetDeferral();
             IsForeground = false;
+            SentrySdk.EndSession();
             AnalyticsHelper.SendEvent("Closed");
             deferral.Complete();
         }
@@ -306,6 +307,7 @@ namespace AINotes {
         private async void OnSuspending(object sender, SuspendingEventArgs e) {
             Logger.Log("[App]", "OnSuspending");
             var deferral = e.SuspendingOperation.GetDeferral();
+            SentrySdk.PauseSession();
             await SentrySdk.FlushAsync(TimeSpan.FromSeconds(2));
             deferral.Complete();
             AnalyticsHelper.SendEvent("Suspended");
@@ -314,16 +316,19 @@ namespace AINotes {
         private void OnResuming(object sender, object o) {
             Logger.Log("[App]", "OnResuming");
             AnalyticsHelper.SendEvent("Resumed");
+            SentrySdk.ResumeSession();
         }
         
         private void OnEnteredBackground(object sender, EnteredBackgroundEventArgs e) {
             Logger.Log("[App]", "OnEnteredBackground");
             IsForeground = false;
+            SentrySdk.PauseSession();
         }
 
         private void OnLeavingBackground(object sender, LeavingBackgroundEventArgs e) {
             Logger.Log("[App]", "OnLeavingBackground");
             IsForeground = true;
+            SentrySdk.ResumeSession();
         }
         
         [SecurityCritical]
@@ -347,6 +352,7 @@ namespace AINotes {
             SentrySdk.AddBreadcrumb(message, level: BreadcrumbLevel.Critical);
             SentrySdk.CaptureException(exception);
             SentrySdk.FlushAsync(TimeSpan.FromSeconds(2)).GetAwaiter().GetResult();
+            SentrySdk.EndSession();
             SentrySdk.Close();
             #endif
         }

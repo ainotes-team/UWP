@@ -30,7 +30,7 @@ namespace FullTrustComponent {
             _discordClient.Initialize();
             
             // set state
-            SetPresence("Editing Stuff", "Working on File");
+            SetPresence("Browsing Files", "");
         }
 
         public static void Deinitialize() => _discordClient.Deinitialize();
