@@ -8,6 +8,7 @@ using Windows.System.Display;
 using Windows.UI.Core;
 using Helpers;
 using Helpers.Essentials;
+using MaterialComponents;
 
 namespace AINotes.Controls {
     public enum CameraPanel {
@@ -42,17 +43,24 @@ namespace AINotes.Controls {
 
                 _mediaCapture = new MediaCapture();
                 if (cameraDevice != null) {
-                    var settings = new MediaCaptureInitializationSettings { VideoDeviceId = cameraDevice.Id };
+                    var settings = new MediaCaptureInitializationSettings {VideoDeviceId = cameraDevice.Id};
                     await _mediaCapture.InitializeAsync(settings);
                 } else {
                     await _mediaCapture.InitializeAsync();
                 }
-                
+
                 _displayRequest.RequestActive();
                 PreviewControl.Source = _mediaCapture;
                 DisplayInformation.AutoRotationPreferences = DisplayOrientations.Landscape;
             } catch (UnauthorizedAccessException) {
                 App.Page.Load(App.EditorScreen);
+                Logger.Log("[CustomCameraPreview]", "StartPreviewAsync: Access to the camera is not allowed.", logLevel: LogLevel.Warning);
+                App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access the camera. (Unauthorized)"));
+                return;
+            } catch (Exception ex) {
+                Logger.Log("[CustomCameraPreview]", $"StartPreviewAsync: Accessing the camera failed:", ex, logLevel: LogLevel.Error);
+                App.Page.Load(App.EditorScreen);
+                App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access the camera."));
                 return;
             }
 

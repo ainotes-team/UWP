@@ -112,6 +112,8 @@ namespace AINotes.Controls.Pages {
         }
 
         private bool _loading;
+        /// <summary>Handles Loading and Unloading of <see cref="T:AINotes.Controls.Pages.CustomPageContent"></see>. Use this to navigate between pages.</summary>
+        /// <param name="content">The page content instance to display.</param>
         public void Load(CustomPageContent content) {
             Logger.Log("[CustomContentPage]", "-> Load");
             if (_loading) throw new ThreadStateException("Loading");

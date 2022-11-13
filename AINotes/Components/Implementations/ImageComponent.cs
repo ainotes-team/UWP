@@ -18,6 +18,7 @@ using AINotes.Helpers.UserActions;
 using Helpers;
 using Helpers.Extensions;
 using AINotes.Models;
+using MaterialComponents;
 using Clipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
 using Point = Windows.Foundation.Point;
 using Size = Windows.Foundation.Size;
@@ -340,9 +341,15 @@ namespace AINotes.Components.Implementations {
             base.OnModelChanged(model);
 
             if (model == null) return;
-            if (!string.IsNullOrEmpty(model.Content) && model.Content != Path) {
-                Path = model.Content;
-                SetImageData(await LocalFileHelper.ReadBytes(model.Content));
+            if (string.IsNullOrEmpty(model.Content) || model.Content == Path) return;
+            Path = model.Content;
+            try {
+                var newContent = await LocalFileHelper.ReadBytes(model.Content);
+                SetImageData(newContent);
+            } catch (IOException ex) {
+                Logger.Log("[ImageComponent]", $"OnModelChanged: ReadBytes failed ({model.Content}):", ex, logLevel: LogLevel.Error);
+                App.Page.Load(App.FileManagerScreen);
+                App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access {model.Content}.\nIt is currently locked by another process."));
             }
         }
     }

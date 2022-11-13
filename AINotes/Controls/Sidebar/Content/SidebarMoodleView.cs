@@ -74,41 +74,47 @@ namespace AINotes.Controls.Sidebar.Content {
         }
 
         private async void Reload() {
-            Logger.Log("Reload");
+            Logger.Log("[SidebarMoodleView]", "Reload");
             
             var userModel = await MoodleHelper.GetUserModel();
+            if (userModel == null) {
+                Logger.Log("[SidebarMoodleView]", "Reload: Request for GetUserModel() failed.", logLevel: LogLevel.Error);
+                App.Page.Notifications.Add(new MDNotification("Request failed. :("));
+                return;
+            }
+            
             var courseModels = await MoodleHelper.GetUserCourses(userModel.UserId);
             var assignments = await MoodleHelper.GetUserAssignments();
 
-            if (!(_resultScroll.Content is StackPanel resultStack)) return;
+            if (_resultScroll.Content is not StackPanel resultStack) return;
             try {
                 foreach (var course in courseModels) {
-                    Logger.Log(course.Id, course.FullName, course.Progress, course.Completed, course.EnrolledUserCount);
+                    Logger.Log("[SidebarMoodleView]", course.Id, course.FullName, course.Progress, course.Completed, course.EnrolledUserCount);
                 
                     var categories = await MoodleHelper.GetCourseCategories(course.Id);
                     var courseAssignments = assignments.Courses.FirstOrDefault(c => c.Id == course.Id)?.Assignments ?? new List<MoodleAssignmentsAssignmentModel>();
                     
                     foreach (var cat in categories) {
-                        Logger.Log(" C>", cat.Id, cat.Name);
+                        Logger.Log("[SidebarMoodleView]", " C>", cat.Id, cat.Name);
                         foreach (var mod in cat.Modules) {
-                            Logger.Log(" C> M>", mod.Id, mod.Name, mod.CompletionData?.State, mod.ModuleName);
+                            Logger.Log("[SidebarMoodleView]", " C> M>", mod.Id, mod.Name, mod.CompletionData?.State, mod.ModuleName);
                             foreach (var c in mod.Contents ?? new List<MoodleContentModel>()) {
-                                Logger.Log(" C> M> C>", c.Type, c.FileName, c.FileUrl);
+                                Logger.Log("[SidebarMoodleView]", " C> M> C>", c.Type, c.FileName, c.FileUrl);
                             }
                         }
                     }
 
                     foreach (var assignment in courseAssignments) {
-                        Logger.Log(" A>", assignment.Id, assignment.CategoryId, assignment.Name, assignment.Intro, assignment.DueDate, assignment.SubmissionDrafts);
+                        Logger.Log("[SidebarMoodleView]", " A>", assignment.Id, assignment.CategoryId, assignment.Name, assignment.Intro, assignment.DueDate, assignment.SubmissionDrafts);
                         foreach (var iA in assignment.IntroAttachments) {
-                            Logger.Log(" A> A>", iA.FileName, iA.FileUrl);
+                            Logger.Log("[SidebarMoodleView]", " A> A>", iA.FileName, iA.FileUrl);
                         }
                         foreach (var iF in assignment.IntroFiles) {
-                            Logger.Log(" A> F>", iF.FileName, iF.FileUrl);
+                            Logger.Log("[SidebarMoodleView]", " A> F>", iF.FileName, iF.FileUrl);
                         }
                     }
                     
-                    Logger.Log(course.DisplayName, "=>", categories.ToFString());
+                    Logger.Log("[SidebarMoodleView]", course.DisplayName, "=>", categories.ToFString());
                     if (_resultSources.ContainsKey(course.Id)) {
                         foreach (var assignment in courseAssignments.Where(assignment => _resultSources[course.Id].All(itm => itm.Id != assignment.Id))) {
                             _resultSources[course.Id].Add(assignment);

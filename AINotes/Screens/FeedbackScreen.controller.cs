@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Threading;
@@ -22,20 +23,27 @@ namespace AINotes.Screens {
                     while (File.Exists(LocalFileHelper.ToAbsolutePath("logs.zip"))) {
                         Thread.Sleep(20);
                     }
-                    
+
                     // create new zip
-                    ZipFile.CreateFromDirectory(LocalFileHelper.ToAbsolutePath("logs"), LocalFileHelper.ToAbsolutePath("logs.zip"), CompressionLevel.NoCompression, false);
+                    var logsZipPath = LocalFileHelper.ToAbsolutePath("logs.zip");
+                    try {
+                        ZipFile.CreateFromDirectory(LocalFileHelper.ToAbsolutePath("logs"), logsZipPath, CompressionLevel.NoCompression, false);
+                    } catch (IOException ex) {
+                        Logger.Log("[FeedbackScreen]", "Exception in sendLogsButtonCommand - ZipFile.CreateFromDirectory: ", ex.ToString(), logLevel: LogLevel.Warning);
+                    }
+
+                    updateCallback?.Invoke("Sending... Please wait :)");
 
                     // upload logs
-                    updateCallback?.Invoke("Sending... Please wait :)");
-                    var responseString = System.Text.Encoding.ASCII.GetString(new WebClient().UploadFile("https://file.io/?expires=3m", LocalFileHelper.ToAbsolutePath("logs.zip")));
-
-                    // send bullet
-                    await Logger.SendBullet($"{SystemInfo.GetSystemId()}: Feedback & Logs", message, (string) JObject.Parse(responseString).GetValue("link"));
+                    // var responseString = System.Text.Encoding.ASCII.GetString(new WebClient().UploadFile("https://file.io/?expires=3m", logsPath));
+                    // var link = (string) JObject.Parse(responseString).GetValue("link");
+                    
+                    // send
+                    await Logger.SendFeedback("Feedback", message, logsZipPath);
 
                 } else {
-                    // send bullet
-                    await Logger.SendBullet($"{SystemInfo.GetSystemId()}: Feedback", message);
+                    // send
+                    await Logger.SendFeedback("Feedback", message);
                 }
             
                 // update status

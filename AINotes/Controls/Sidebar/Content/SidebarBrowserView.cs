@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Web.Http;
 using AINotes.Controls.Pages;
+using Helpers;
 using MaterialComponents;
 
 namespace AINotes.Controls.Sidebar.Content {
@@ -62,7 +63,15 @@ namespace AINotes.Controls.Sidebar.Content {
         }
 
         private void OnSearchButtonClick(object sender, RoutedEventArgs args) {
-            NavigateTo(new Uri(_searchBar.Text));
+            Uri targetUri;
+            try {
+                targetUri = new Uri(_searchBar.Text);
+            } catch (UriFormatException) {
+                Logger.Log("[SidebarBrowserView]", "Invalid Uri", logLevel: LogLevel.Warning);
+                App.Page.Notifications.Add(new MDNotification("Invalid URI"));
+                return;
+            }
+            NavigateTo(targetUri);
         }
 
         private void OnReloadButtonPressed(object sender, EventArgs args) {

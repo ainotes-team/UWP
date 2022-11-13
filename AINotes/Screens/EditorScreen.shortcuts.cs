@@ -48,7 +48,9 @@ namespace AINotes.Screens {
         private void MoveToForegroundShortcut() {
             if (!ShouldExecute()) return;
 
-            var currentMaxZIndex = App.EditorScreen.GetDocumentComponents().Max(Canvas.GetZIndex);
+            var documentComponents = App.EditorScreen.GetDocumentComponents();
+            if (documentComponents.Count == 0) return;
+            var currentMaxZIndex = documentComponents.Max(Canvas.GetZIndex);
             
             foreach (var pl in App.EditorScreen.GetDocumentComponents().Where(pl => pl.IsSelected)) {
                 Canvas.SetZIndex(pl, currentMaxZIndex + 1);

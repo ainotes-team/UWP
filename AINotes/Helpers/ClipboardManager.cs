@@ -18,8 +18,15 @@ namespace AINotes.Helpers {
         public static async void Paste(Point position) {
             Logger.Log("[ClipboardManager]", "-> Paste:", position.X, "|", position.Y);
             CustomDropdown.CloseDropdown();
-            
-            var clipboardContent = await Clipboard.GetContent();
+
+            ClipboardContent clipboardContent;
+            try {
+                clipboardContent = await Clipboard.GetContent();
+            } catch (Exception ex) {
+                Logger.Log("[ClipboardManager]", "-> Paste: Exception on GetContent:", ex.ToString(), logLevel: LogLevel.Error);
+                return;
+            }
+
             switch (clipboardContent.ContentType) {
                 case ClipboardContentType.Ink:
                     foreach (var componentModel in TemporaryClipboard) {

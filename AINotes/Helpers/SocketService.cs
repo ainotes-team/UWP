@@ -44,7 +44,7 @@ namespace AINotes.Helpers {
         }
         
         private async void OnBackgroundWorkerDoWork(object sender, DoWorkEventArgs args) {
-            Logger.Log("DoWork", sender);
+            Logger.Log("[SocketService]", "BTServer:", "DoWork", sender);
             Logger.Log("[SocketService]", "BTServer:", "Starting...");
             try {
                 // provider
@@ -130,6 +130,7 @@ namespace AINotes.Helpers {
         public void RestartBluetoothServer() {
             Logger.Log("[SocketService]", "BTServer:", "Restarting...");
             StopBluetoothServer();
+            // TODO: check if _backgroundWorker.IsBusy
             StartBluetoothServer();
         }
 
@@ -251,7 +252,14 @@ namespace AINotes.Helpers {
         
         private async void OnBtConnectionReceived(StreamSocketListener sender, StreamSocketListenerConnectionReceivedEventArgs args) {
             Logger.Log("[SocketService]", "Server: OnBtConnectionReceived");
-            var serverRemoteSocket = args.Socket;
+            StreamSocket serverRemoteSocket;
+            try {
+                serverRemoteSocket = args.Socket;
+            } catch (Exception ex) {
+                Logger.Log("[SocketService]", "Server: OnBtConnectionReceived - Error in GetSocket", ex, logLevel: LogLevel.Error);
+                return;
+            }
+
             var serverRemoteDevice = await BluetoothDevice.FromHostNameAsync(serverRemoteSocket.Information.RemoteHostName);
 
             var serverStreamWriter = new DataWriter(serverRemoteSocket.OutputStream);
@@ -333,16 +341,24 @@ namespace AINotes.Helpers {
                 var device = new RemoteDevice(args.Id, args.Name);
                 callback("added", device);
             });
-            if (BluetoothDeviceWatcher.Status == DeviceWatcherStatus.Started || BluetoothDeviceWatcher.Status == DeviceWatcherStatus.EnumerationCompleted) BluetoothDeviceWatcher.Stop();
-            BluetoothDeviceWatcher.Added += addedListener;
-            _btDeviceAddedListener.Add(addedListener);
+            if (BluetoothDeviceWatcher.Status is DeviceWatcherStatus.Started or DeviceWatcherStatus.EnumerationCompleted) BluetoothDeviceWatcher.Stop();
+            try {
+                BluetoothDeviceWatcher.Added += addedListener;
+                _btDeviceAddedListener.Add(addedListener);
+            } catch (InvalidOperationException ex) {
+                Logger.Log("[SocketService]", "Subscribing to BluetoothDeviceWatcher.Added failed:", ex, logLevel: LogLevel.Error);
+            }
 
             var removedListener = new TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>((_, args) => {
                 var device = BluetoothDevices.ContainsKey(args.Id) ? BluetoothDevices[args.Id] : new RemoteDevice(args.Id, $"Unknown (ID: {args.Id})");
                 callback("removed", device);
             });
-            BluetoothDeviceWatcher.Removed += removedListener;
-            _btDeviceRemovedListener.Add(removedListener);
+            try {
+                BluetoothDeviceWatcher.Removed += removedListener;
+                _btDeviceRemovedListener.Add(removedListener);
+            } catch (InvalidOperationException ex) {
+                Logger.Log("[SocketService]", "Subscribing to BluetoothDeviceWatcher.Removed failed:", ex, logLevel: LogLevel.Error);
+            }
 
             if (!_bluetoothDeviceWatcherInitialized) {
                 InitializeBluetoothDeviceWatcher();

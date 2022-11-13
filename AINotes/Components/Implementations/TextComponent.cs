@@ -150,13 +150,13 @@ namespace AINotes.Components.Implementations {
 
         private void OnGettingFocus(UIElement sender, GettingFocusEventArgs args) {
             // cancel in selection mode
-            if (App.EditorScreen.Selecting) {
+            if (App.EditorScreen?.Selecting ?? false) {
                 args.Cancel = true;
                 return;
             }
             
             // cancel if text component tbi is not selected
-            if (App.EditorScreen.SelectedToolbarItem.GetType() != typeof(TextComponentTool)) {
+            if (App.EditorScreen?.SelectedToolbarItem?.GetType() != typeof(TextComponentTool)) {
                 args.Cancel = true;
                 return;
             }

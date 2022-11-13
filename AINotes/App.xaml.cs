@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Data.Pdf;
@@ -23,6 +25,8 @@ using AINotes.Helpers;
 using AINotes.Models;
 using AINotesCloud;
 using MaterialComponents;
+using Sentry.Protocol;
+
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -51,14 +55,27 @@ namespace AINotes {
             
             // init sentry
             SentrySdk.Init(new SentryOptions {
-                Dsn = new Dsn(Configuration.LicenseKeys.Sentry),
+                Dsn = Configuration.LicenseKeys.Sentry,
                 Release = AppInfo.VersionString,
+#if DEBUG
+                Environment = "debug",
+#else
+                Environment = "production",
+#endif
+                    
+                IsGlobalModeEnabled = true,
                 SendDefaultPii = true,
+                AutoSessionTracking = true,
                 MaxBreadcrumbs = 50,
+                
+                AttachStacktrace = true,
+                StackTraceMode = StackTraceMode.Enhanced,
+                
+                TracesSampleRate = 1.0,
             });
             
             SentrySdk.ConfigureScope(scope => {
-                scope.Contexts.OperatingSystem.Name = "Windows 10";
+                scope.Contexts.OperatingSystem.Name = "Windows 10/11";
                 scope.Contexts.OperatingSystem.Version = SystemInfo.GetSystemVersion(DeviceInfo.VersionString);
                 scope.Contexts.OperatingSystem.Build = DeviceInfo.VersionString;
 
@@ -248,14 +265,25 @@ namespace AINotes {
                 if (Connection == null) {
                     Logger.Log("[App]", "OnLaunched: Print - Waiting for Service", e.Arguments);
                     static void AppServiceWaiter(object s, object a) {
-                        PrintInsert();
+                        try {
+                            PrintInsert();
+                        } catch (Exception ex) {
+                            Logger.Log("[App]", "OnLaunched: Print - Waiting for Service - PrintInsert failed:", ex, logLevel: LogLevel.Error);
+                            Page.Notifications.Add(new MDNotification("Insert failed. :("));
+                        }
+
                         AppServiceConnected -= AppServiceWaiter;
                     }
 
                     AppServiceConnected += AppServiceWaiter;
                 } else {
                     Logger.Log("[App]", "OnLaunched: Print - Inserting", e.Arguments);
-                    PrintInsert();
+                    try {
+                        PrintInsert();
+                    } catch (Exception ex) {
+                        Logger.Log("[App]", "OnLaunched: Print - Inserting - PrintInsert failed:", ex, logLevel: LogLevel.Error);
+                        Page.Notifications.Add(new MDNotification("Insert failed. :("));
+                    }
                 }
             }
             
@@ -271,8 +299,11 @@ namespace AINotes {
             deferral.Complete();
         }
 
-        private void OnSuspending(object sender, SuspendingEventArgs e) {
+        private async void OnSuspending(object sender, SuspendingEventArgs e) {
             Logger.Log("[App]", "OnSuspending");
+            var deferral = e.SuspendingOperation.GetDeferral();
+            await SentrySdk.FlushAsync(TimeSpan.FromSeconds(2));
+            deferral.Complete();
             AnalyticsHelper.SendEvent("Suspended");
         }
 
@@ -290,7 +321,9 @@ namespace AINotes {
             Logger.Log("[App]", "OnLeavingBackground");
             IsForeground = true;
         }
-
+        
+        [SecurityCritical]
+        [HandleProcessCorruptedStateExceptions]
         private void OnUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e) {
             Logger.Log("[App]", "UnhandledException:", e.Exception?.ToString(), logLevel: LogLevel.Error);
             AnalyticsHelper.SendEvent("Closed", $"Exception: {e.Message}");
@@ -298,8 +331,18 @@ namespace AINotes {
             #if DEBUG
             if (Debugger.IsAttached) Debugger.Break();
             #else
-            SentrySdk.AddBreadcrumb(e.Message, level: Sentry.Protocol.BreadcrumbLevel.Critical);
-            SentrySdk.CaptureException(e.Exception);
+            var exception = e.Exception;
+            var message = e.Message;
+            if (exception == null) return;
+            exception.Data[Mechanism.HandledKey] = false;
+            exception.Data[Mechanism.MechanismKey] = "Application.UnhandledException";
+
+            SentrySdk.ConfigureScope(scope => {
+                scope.SetTag("Exception-Sender", sender.ToString());
+            });
+            SentrySdk.AddBreadcrumb(message, level: BreadcrumbLevel.Critical);
+            SentrySdk.CaptureException(exception);
+            SentrySdk.FlushAsync(TimeSpan.FromSeconds(2)).GetAwaiter().GetResult();
             SentrySdk.Close();
             #endif
         }

@@ -198,36 +198,41 @@ namespace AINotes {
             }
 
             foreach (var itm in args.Files) {
-                if (!(itm is StorageFile f)) continue;
-                // read file
-                var fileJson = await FileIO.ReadTextAsync(f);
+                if (itm is not StorageFile f) continue;
+                try {
+                    // read file
+                    var fileJson = await FileIO.ReadTextAsync(f);
 
-                // deserialize
-                var newFileModel = JsonConvert.DeserializeObject<FileModel>(fileJson);
-                var newFileComponents = JsonConvert.DeserializeObject<List<ComponentModel>>(newFileModel.ComponentModels);
+                    // deserialize
+                    var newFileModel = JsonConvert.DeserializeObject<FileModel>(fileJson);
+                    var newFileComponents = JsonConvert.DeserializeObject<List<ComponentModel>>(newFileModel.ComponentModels);
 
-                // create file
-                var newFileId = await FileHelper.CreateFileAsync(newFileModel.Name, newFileModel.Subject, FileManagerScreen.CurrentDirectory.DirectoryId);
-                await FileHelper.UpdateFileAsync(newFileId, lineMode: newFileModel.LineMode, strokeContent: newFileModel.StrokeContent);
+                    // create file
+                    var newFileId = await FileHelper.CreateFileAsync(newFileModel.Name, newFileModel.Subject, FileManagerScreen.CurrentDirectory.DirectoryId);
+                    await FileHelper.UpdateFileAsync(newFileId, lineMode: newFileModel.LineMode, strokeContent: newFileModel.StrokeContent);
 
-                // create components
-                foreach (var componentModel in newFileComponents) {
-                    componentModel.FileId = newFileId;
-                    componentModel.ComponentId = default;
-                    if (componentModel.Type == "DocumentComponent") {
-                        var imgSavingPath = new ImageComponent(null).GetImageSavingPath();
-                        var imgBytes = componentModel.Content.Deserialize<byte[]>();
-                        await LocalFileHelper.WriteFileAsync(imgSavingPath, imgBytes);
-                        componentModel.Content = imgSavingPath;
+                    // create components
+                    foreach (var componentModel in newFileComponents) {
+                        componentModel.FileId = newFileId;
+                        componentModel.ComponentId = default;
+                        if (componentModel.Type == "DocumentComponent") {
+                            var imgSavingPath = new ImageComponent(null).GetImageSavingPath();
+                            var imgBytes = componentModel.Content.Deserialize<byte[]>();
+                            await LocalFileHelper.WriteFileAsync(imgSavingPath, imgBytes);
+                            componentModel.Content = imgSavingPath;
+                        }
+
+                        await FileHelper.CreateComponentAsync(componentModel);
                     }
 
-                    await FileHelper.CreateComponentAsync(componentModel);
+                    // open the file
+                    if (Page.Content != EditorScreen) Page.Load(EditorScreen);
+                    Page.Title = newFileModel.Name;
+                    EditorScreen.LoadFile(newFileId);
+                } catch (Exception ex) {
+                    Page.Notifications.Add(new MDNotification($"Import failed:\n{ex}"));
+                    Logger.Log("[App]", "OnFileActivated: Failed to import file: ", ex, logLevel: LogLevel.Error);
                 }
-
-                // open the file
-                if (Page.Content != EditorScreen) Page.Load(EditorScreen);
-                Page.Title = newFileModel.Name;
-                EditorScreen.LoadFile(newFileId);
             }
 
             base.OnFileActivated(args);

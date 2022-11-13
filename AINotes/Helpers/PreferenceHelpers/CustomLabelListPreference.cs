@@ -135,7 +135,7 @@ namespace AINotes.Helpers.PreferenceHelpers {
             void UpdateSelectedColor(Color color) {
                 selectedColor = color;
                 foreach (var v in colorPicker.Children) {
-                    if (!(v is CustomFrame f)) continue;
+                    if (v is not CustomFrame f) continue;
                     if (f.Background != selectedColor.ToBrush()) {
                         f.BorderBrush = Configuration.Theme.CardBorder;
                         f.BorderThickness = new Thickness(1);
@@ -155,7 +155,7 @@ namespace AINotes.Helpers.PreferenceHelpers {
                 }
             }, async () => {
                 if (selectedColor == Colors.Transparent || string.IsNullOrWhiteSpace(nameEntry.Text)) {
-                    statusLabel.Text = "Please coose a subject and color.";
+                    statusLabel.Text = "Please choose a subject and color.";
                     statusLabel.Height = 0;
                     return;
                 }
@@ -168,16 +168,24 @@ namespace AINotes.Helpers.PreferenceHelpers {
 
                 await FileHelper.UpdateLabelAsync(newItem);
 
-                var collectionA = ((StackPanel) ((StackPanel) _subjectFrames[model].Content)?.Children[0])?.Children;
-                if (collectionA != null) {
-                    ((CustomFrame) collectionA[0]).Background = selectedColor.ToBrush();
-                    ((MDLabel) ((StackPanel) ((StackPanel) _subjectFrames[model].Content).Children[0]).Children[1]).Text = nameEntry.Text;
-                }
+                try {
+                    var collectionA = ((StackPanel) ((StackPanel) _subjectFrames[model].Content)?.Children[0])?.Children;
+                    if (collectionA != null) {
+                        ((CustomFrame) collectionA[0]).Background = selectedColor.ToBrush();
+                        ((MDLabel) ((StackPanel) ((StackPanel) _subjectFrames[model].Content).Children[0]).Children[1]).Text = nameEntry.Text;
+                    }
 
-                var collectionB = ((StackPanel) ((StackPanel) _subjectFrames[model].Content)?.Children[1])?.Children;
-                if (collectionB != null) {
-                    ((MDToolbarItem) collectionB[0]).Pressed += (_, _) => EditLabel(newItem);
-                    ((MDToolbarItem) ((StackPanel) ((StackPanel) _subjectFrames[model].Content).Children[1]).Children[1]).Released += (_, _) => DeleteLabel(newItem);
+                    var collectionB = ((StackPanel) ((StackPanel) _subjectFrames[model].Content)?.Children[1])?.Children;
+                    if (collectionB != null) {
+                        ((MDToolbarItem) collectionB[0]).Pressed += (_, _) => EditLabel(newItem);
+                        ((MDToolbarItem) ((StackPanel) ((StackPanel) _subjectFrames[model].Content).Children[1]).Children[1]).Released += (_, _) => DeleteLabel(newItem);
+                    }
+                } catch (InvalidCastException ex) {
+#if DEBUG
+                    throw;
+#else
+                    Logger.Log("[CustomLabelListPreference]", "EditLabels: UI Updated failed (InvalidCastException):", ex, logLevel: LogLevel.Error);
+#endif
                 }
 
                 var frame = _subjectFrames[model];

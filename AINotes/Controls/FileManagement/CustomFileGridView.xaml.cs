@@ -394,7 +394,7 @@ namespace AINotes.Controls.FileManagement {
             var f = new FileSavePicker {
                 SuggestedFileName = fullFileModel.Name,
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                DefaultFileExtension = ".ainote",
+                DefaultFileExtension = ".pdf",
                 FileTypeChoices = {
                     {"AINotes File", ainoteExtensions},
                     {"PDF File", pdfExtensions}
@@ -407,10 +407,20 @@ namespace AINotes.Controls.FileManagement {
             
             if (ainoteExtensions.Contains(selectedFile.FileType)) {
                 Logger.Log("[CustomFileGridView]", "Export: AINotes File");
-                CachedFileManager.DeferUpdates(selectedFile);
-                await FileIO.WriteTextAsync(selectedFile, await FileHelper.GetFileJsonAsync(fullFileModel));
-                var status = await CachedFileManager.CompleteUpdatesAsync(selectedFile);
-                App.Page.Notifications.Add(new MDNotification(status == Windows.Storage.Provider.FileUpdateStatus.Complete ? "Export successful" : "Export failed"));
+                var status = true;
+                try {
+                    CachedFileManager.DeferUpdates(selectedFile);
+                } catch (InvalidCastException ex) {
+                    Logger.Log("[CustomFileGridView]", "Export: CachedFileManager.DeferUpdates failed: ", ex, logLevel: LogLevel.Error);
+                    status = false;
+                }
+
+                if (status) {
+                    await FileIO.WriteTextAsync(selectedFile, await FileHelper.GetFileJsonAsync(fullFileModel));
+                    status = await CachedFileManager.CompleteUpdatesAsync(selectedFile) == Windows.Storage.Provider.FileUpdateStatus.Complete;
+                }
+                
+                App.Page.Notifications.Add(new MDNotification(status ? "Export successful" : "Export failed"));
             } else if (pdfExtensions.Contains(selectedFile.FileType)) {
                 Logger.Log("[CustomFileGridView]", "Export: PDF File");
                 MainThread.BeginInvokeOnMainThread(async () => {

@@ -326,7 +326,8 @@ namespace AINotes.Helpers {
 
                     // serialize document component data
                     if (component is ImageComponent documentComponent) {
-                        updatedModel.Content = documentComponent.Data.Serialize();
+                        // TODO: Fix
+                        // updatedModel.Content = documentComponent.Data.Serialize();
                     }
 
                     // send

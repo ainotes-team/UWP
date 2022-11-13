@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Helpers.Essentials;
+using Sentry;
 
 namespace Helpers {
     public enum LogLevel {
@@ -130,32 +131,13 @@ namespace Helpers {
             LogPrefixed(logLevel, logMessage);
         }
         
-        public static async Task SendBullet(string title, string message, string link = "") {
-            const string apiKey = "o.Pn10V8k80roqINJS6RplcGT22S3Rnv0j";
-            const string apiUrl = "https://api.pushbullet.com/v2/pushes";
-            const string channelTag = "8SZAKmHU4CyrgqxG45A4Nh213123acfsa";
-            
-            Dictionary<string, string> content;
-            if (link == "") {
-                content = new Dictionary<string, string> {
-                    {"channel_tag", channelTag},
-                    {"title", title},
-                    {"body", message},
-                    {"type", "note"}
-                };
-            } else {
-                content = new Dictionary<string, string> {
-                    {"channel_tag", channelTag},
-                    {"title", title},
-                    {"body", message},
-                    {"url", link},
-                    {"type", "link"}
-                };
-            }
-
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-            var response = await HttpClient.PostAsync(apiUrl, new FormUrlEncodedContent(content));
-            await response.Content.ReadAsStringAsync();
+        public static async Task SendFeedback(string title, string message, string attachmentPath=null) {
+            var eventId = SentrySdk.CaptureMessage($"{title} ({SystemInfo.GetSystemId()})", scope  => {
+                if (attachmentPath == null) return;
+                scope.AddAttachment(attachmentPath);
+            });
+            SentrySdk.CaptureUserFeedback(eventId, SystemInfo.GetSystemId(), message);
+            await SentrySdk.FlushAsync(TimeSpan.FromSeconds(2));
         }
     }
 }

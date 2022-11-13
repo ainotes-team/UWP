@@ -33,8 +33,14 @@ namespace Helpers {
             if (commitButtonText != null) {
                 openPicker.CommitButtonText = commitButtonText;
             }
+
+            StorageFile storageItem = null;
+            try {
+                storageItem = await openPicker.PickSaveFileAsync();
+            } catch (Exception ex) {
+                Logger.Log("[FilePicker]", "Picking a SaveFile failed:", ex, logLevel: LogLevel.Error);
+            }
             
-            var storageItem = await openPicker.PickSaveFileAsync();
             return storageItem == null ? (null, null, null) : (null, storageItem.Name, storageItem.Path);
         }
     }

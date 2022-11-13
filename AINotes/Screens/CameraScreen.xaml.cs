@@ -1,7 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using AINotes.Controls;
-using Microsoft.Toolkit.Uwp.UI.Animations;
 
 namespace AINotes.Screens {
     public partial class CameraScreen {
@@ -44,15 +43,16 @@ namespace AINotes.Screens {
             SwitchCamera();
         }
         
-        private async void OnOptionsButtonClicked(object sender, EventArgs e) {
+        private void OnOptionsButtonClicked(object sender, EventArgs e) {
+            var senderElement = (UIElement) sender;
             switch (OptionsPanel.Visibility) {
                 case Visibility.Visible:
                     OptionsPanel.Visibility = Visibility.Collapsed;
-                    await ((UIElement) sender).Rotate(value: 0.0f, centerX: 24.0f, centerY: 24.0f, duration: 250, delay: 0, easingType: EasingType.Default).StartAsync();
+                    senderElement.Rotation = 0.0f;
                     break;
                 case Visibility.Collapsed:
                     OptionsPanel.Visibility = Visibility.Visible;
-                    await ((UIElement) sender).Rotate(value: 180.0f, centerX: 24.0f, centerY: 24.0f, duration: 250, delay: 0, easingType: EasingType.Default).StartAsync();
+                    senderElement.Rotation = 180.0f;
                     break;
             }
         }

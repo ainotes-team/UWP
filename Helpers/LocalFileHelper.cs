@@ -27,7 +27,8 @@ namespace Helpers {
         
         public static string ToAbsolutePath(string path) {
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), path);
-            return Path.GetFullPath(path);
+            path = Path.GetFullPath(path);
+            return path;
         }
 
         public static IEnumerable<string> GetFolders(string path, bool includePath = false) {
