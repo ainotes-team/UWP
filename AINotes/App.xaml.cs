@@ -73,6 +73,9 @@ namespace AINotes {
                 TracesSampleRate = 1.0,
             };
             sentryOptions.DisableTaskUnobservedTaskExceptionCapture();
+#if DEBUG
+            sentryOptions.DisableAppDomainUnhandledExceptionCapture();
+#endif
             SentrySdk.Init(sentryOptions);
             
             SentrySdk.ConfigureScope(scope => {
