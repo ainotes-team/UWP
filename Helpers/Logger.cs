@@ -29,16 +29,14 @@ namespace Helpers {
             {LogLevel.Error,   "[ERROR  ]  "},
         };
         
-        #if !DEBUG
-        private static readonly Dictionary<LogLevel, Sentry.Protocol.BreadcrumbLevel> SentryLogLevels = new Dictionary<LogLevel, Sentry.Protocol.BreadcrumbLevel> {
-            {LogLevel.Timing,  Sentry.Protocol.BreadcrumbLevel.Debug},
-            {LogLevel.Verbose, Sentry.Protocol.BreadcrumbLevel.Debug},
-            {LogLevel.Debug,   Sentry.Protocol.BreadcrumbLevel.Debug},
-            {LogLevel.Default, Sentry.Protocol.BreadcrumbLevel.Info},
-            {LogLevel.Warning, Sentry.Protocol.BreadcrumbLevel.Warning},
-            {LogLevel.Error,   Sentry.Protocol.BreadcrumbLevel.Error},
+        private static readonly Dictionary<LogLevel, BreadcrumbLevel> SentryLogLevels = new Dictionary<LogLevel, BreadcrumbLevel> {
+            {LogLevel.Timing,  BreadcrumbLevel.Debug},
+            {LogLevel.Verbose, BreadcrumbLevel.Debug},
+            {LogLevel.Debug,   BreadcrumbLevel.Debug},
+            {LogLevel.Default, BreadcrumbLevel.Info},
+            {LogLevel.Warning, BreadcrumbLevel.Warning},
+            {LogLevel.Error,   BreadcrumbLevel.Error},
         };
-        #endif
 
         private static StreamWriter _loggingStream;
         private static readonly HttpClient HttpClient = new HttpClient();
@@ -100,11 +98,9 @@ namespace Helpers {
             // add actual log
             l += logString;
             InternalLog(l);
-            
-            #if !DEBUG
+
             // write to sentry
-            Sentry.SentrySdk.AddBreadcrumb(l, "log", level: SentryLogLevels[logLevel]);
-            #endif
+            SentrySdk.AddBreadcrumb(l, "log", level: SentryLogLevels[logLevel]);
         }
         
         // default log function

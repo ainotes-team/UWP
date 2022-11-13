@@ -28,6 +28,8 @@ using MaterialComponents;
 
 #if DEBUG
 using System.Diagnostics;
+#else
+using Sentry.Protocol;
 #endif
 
 namespace AINotes {

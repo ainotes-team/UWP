@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using AINotes.Controls.Input;
+using AINotes.Models;
 using Helpers.Essentials;
 
 namespace AINotes.Helpers.PreferenceHelpers {
@@ -32,8 +34,16 @@ namespace AINotes.Helpers.PreferenceHelpers {
             return _view;
         }
 
+        private bool IsValueValid(string newValue) {
+            newValue = newValue.Replace(" ", "");
+            if (newValue.EndsWith("+")) return false;
+            var keyStrings = newValue.Split("+");
+            return keyStrings.All(keyString => Enum.TryParse(keyString, out VirtualKey _));
+        }
+
         private void OnTextChanged(object sender, TextChangedEventArgs args) {
-            if (_view.Text.Replace(" ", "").EndsWith("+")) return;
+            if (!IsValueValid(_view.Text)) return;
+            
             UserPreferenceHelper.Set(PropertyName, _view.Text);
             OnChanged();
         }
