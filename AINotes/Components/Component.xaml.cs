@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using AINotes.Components.Implementations;
 using AINotes.Controls.Pages;
+using AINotes.Helpers;
+using AINotes.Helpers.Geometry;
 using AINotes.Helpers.Imaging;
 using AINotes.Helpers.UserActions;
 using AINotes.Models;
@@ -322,7 +325,8 @@ namespace AINotes.Components {
         }
         
         protected void ResetTouchStartBounds() => TouchStartBounds = new RectangleD(-1, -1, -1, -1);
-
+        private Point LastKnownOnNobPosition = new Point();
+        
         private void OnResizingNobTouch(object o, WTouchEventArgs args) {
             if (!args.InContact && args.ActionType != WTouchAction.Released) {
                 IsResizing = false;
@@ -333,8 +337,7 @@ namespace AINotes.Components {
             switch (args.ActionType) {
                 case WTouchAction.Pressed:
                     CustomDropdown.CloseDropdown();
-                    TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
-
+                    LastKnownOnNobPosition = TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
                     TouchStartBounds = new RectangleD(_x, _y, GetWidth(), GetHeight());
 
                     IsResizing = true;
@@ -348,8 +351,37 @@ namespace AINotes.Components {
                         var width = GetWidth();
                         var height = GetHeight();
 
-                        if (GetWidth() - (TouchTrackingStart.X - args.Location.X) >= MinWidth) width = GetWidth() - (TouchTrackingStart.X - args.Location.X);
-                        if (GetHeight() - (TouchTrackingStart.Y - args.Location.Y) >= MinHeight) height = GetHeight() - (TouchTrackingStart.Y - args.Location.Y);
+                        // if proportional resizing
+                        if (Shortcuts.PressedKeys.Contains(VirtualKey.Control)) {
+                            var cursorSlope = -1;
+                            var componentSlope = TouchStartBounds.Height / TouchStartBounds.Width;
+
+                            var newXOnNob = args.Location.X;
+                            var newYOnNob = args.Location.Y;
+
+                            var startXOnNob = LastKnownOnNobPosition.X;
+                            var startYOnNob = LastKnownOnNobPosition.Y;
+
+                            var cursorStraight = new GeometryStraight(new GeometryPoint(newXOnNob, newYOnNob), cursorSlope);
+                            var componentStraight = new GeometryStraight(new GeometryPoint(0, 0), componentSlope);
+
+                            var intersection = Geometry.GetIntersection(cursorStraight, componentStraight);
+
+                            if (width + intersection.X >= MinWidth && height + intersection.Y >= MinHeight) {
+                                width += intersection.X;
+                                height += intersection.Y;
+
+                                LastKnownOnNobPosition = new Point(newXOnNob, newYOnNob);
+                            }
+                        } else {
+                            if (GetWidth() - (TouchTrackingStart.X - args.Location.X) >= MinWidth) {
+                                width = GetWidth() - (TouchTrackingStart.X - args.Location.X);
+                            }
+
+                            if (GetHeight() - (TouchTrackingStart.Y - args.Location.Y) >= MinHeight) {
+                                height = GetHeight() - (TouchTrackingStart.Y - args.Location.Y);
+                            }
+                        }
 
                         App.EditorScreen.OnComponentNobMoving(new Point(_x + GetWidth() + args.Location.X, _y + GetHeight() + args.Location.Y));
 
@@ -401,6 +433,10 @@ namespace AINotes.Components {
 
                         if (GetWidth() - (TouchTrackingStart.X - args.Location.X) >= MinWidth) {
                             width = GetWidth() - (TouchTrackingStart.X - args.Location.X);
+                        }
+
+                        if (Shortcuts.PressedKeys.Contains(VirtualKey.Control)) {
+                            height = (TouchStartBounds.Height / TouchStartBounds.Width) * width;
                         }
 
                         App.EditorScreen.OnComponentNobMoving(new Point(_x + GetWidth() + args.Location.X, _y + args.Location.Y));
