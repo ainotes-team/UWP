@@ -8,10 +8,12 @@ using AINotes.Helpers.Imaging;
 using Helpers;
 using Helpers.Controls;
 using Helpers.Extensions;
+using Helpers.Essentials;
 
 namespace AINotes.Controls.Input {
     public partial class CustomColorPicker {
         public const int SwatchSize = 26;
+        private const int DefaultColorMax = 21;
         
         public ArrayList DefaultColors = new ArrayList {
             "#FFC114",
@@ -34,9 +36,12 @@ namespace AINotes.Controls.Input {
             "#FFFFFF",
         };
 
+        public static ArrayList CustomColors = new ArrayList();
+
         public event Action<Color> ColorSelected;
 
         public CustomColorPicker(string selectHexColor = null, bool showPlus = false) {
+            CustomColors = SavedStatePreferenceHelper.Get("customPenColors", "[]").Deserialize<ArrayList>();
             ColumnSpacing = RowSpacing = 6;
 
             RowDefinitions.AddRange(new [] {
@@ -53,6 +58,7 @@ namespace AINotes.Controls.Input {
 
             var top = 0;
             var left = 0;
+            DefaultColors.AddRange(CustomColors);
             foreach (string hexColor in DefaultColors) {
                 var color = ColorCreator.FromHex(hexColor);
                 var frame = new CustomFrame {
@@ -72,6 +78,7 @@ namespace AINotes.Controls.Input {
                 if (hexColor == selectHexColor) {
                     frame.BorderThickness = new Thickness(3);
                 }
+
                 
                 this.AddChild(frame, top, left);
 
@@ -101,9 +108,18 @@ namespace AINotes.Controls.Input {
         }
 
         private void OnPlusFrameTouch(object o, WTouchEventArgs args) {
-            // TODO: Add Color Code
             if (args.ActionType != WTouchAction.Pressed) return;
-            new MDContentPopup("Add Color", new ColorPicker()).Show();
+            ColorPicker colorPicker = new ColorPicker();
+            var popup = new MDContentPopup("Add Color", colorPicker, () => {
+                Color color = colorPicker.Color;
+                if(CustomColors.Count >= DefaultColorMax) {
+                    CustomColors.RemoveAt(0);
+                }
+                CustomColors.Add(color.ToHex());
+                ColorSelected?.Invoke(color);
+                SavedStatePreferenceHelper.Set("customPenColors", CustomColors.Serialize());
+            });
+            popup.Show();
         }
     }
 }
