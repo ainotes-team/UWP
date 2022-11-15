@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections.Generic;
+using AINotes.Helpers;
+using Helpers;
+using AINotes.Models;
+using Random = Helpers.Random;
+
+namespace AINotes {
+    public static class Configuration {
+        public static readonly string DefaultProfilePicture = Random.Choice(new List<string> {
+            "https://i.ibb.co/5cst7Cz/green.png",
+            "https://i.ibb.co/qkmt4T6/orange.png",
+            "https://i.ibb.co/syhRsMb/purple.png",
+            "https://i.ibb.co/q9gcnS9/red.png",
+            "https://i.ibb.co/yV20Np2/black.png",
+        });
+
+        public static class Contact {
+            public enum Media {
+                Keybase,
+                Discord,
+                Telegram,
+            }
+
+            public static readonly Dictionary<Media, string> Icons = new Dictionary<Media, string> {
+                { Media.Keybase, "https://img.icons8.com/windows/48/000000/keybase2.png" },
+                { Media.Discord, "https://img.icons8.com/windows/48/000000/discord-logo.png" },
+                { Media.Telegram, "https://img.icons8.com/windows/48/000000/telegram-app.png" },
+            };
+            
+            public static readonly Dictionary<Media, string> Team = new Dictionary<Media, string> {
+                { Media.Keybase, "https://keybase.io/team/ainotes" },
+                { Media.Discord, "https://discord.gg/f5UkpBw" },
+            };
+
+            public static readonly Dictionary<Media, string> Vincent = new Dictionary<Media, string> {
+                { Media.Keybase, "https://keybase.io/vincentscode" },
+                { Media.Discord, "Vincent#0212" },
+                { Media.Telegram, "https://t.me/vincentscode" },
+            };
+            
+            public static readonly Dictionary<Media, string> Fabian = new Dictionary<Media, string> {
+                { Media.Keybase, "https://keybase.io/fabianscode" },
+                { Media.Discord, "Fabian#1308" },
+            };
+        }
+
+        // TODO: improve onenote import values (https://sourceforge.net/projects/inkmltk/)
+        public static class OneNoteFactors {
+            public const float SizeFactor = 25.4f;
+            public const float PressureFactor = 10000.0f;
+            public const float PenSizeFactor = SizeFactor;
+        }
+
+        // License Keys
+        public static class LicenseKeys {
+            public const string GoogleVision = "***";
+            public const string MicrosoftGraph = "***";
+            public const string Sentry = "***";
+        }
+
+        // Bluetooth (Local Sharing)
+        public const string RfcommChatServiceUuidString = "A1701E5F-1069-4AD6-89B6-E161D79BE4D8";
+        public static readonly Guid RfcommChatServiceUuid = Guid.Parse(RfcommChatServiceUuidString);
+
+        public const uint SdpServiceNameAttributeId = 0x100;
+        public const byte SdpServiceNameAttributeType = (4 << 3) | 5;
+        public const string SdpServiceName = "AINotes Rfcomm File Sharing Service";
+
+        // Extensions
+        public const string ExtensionContractName = "de.vincentscode.ainotesExtension";
+
+        public static ThemeModel Theme => ThemeHelper.GetTheme();
+
+        public static class ImageEditorScreen {
+            public const int EditorPadding = 40;
+        }
+        
+        private static bool _listenersSet;
+        public static void Initialize() {
+            Logger.Log("[Configuration]", "-> Initialize");
+            
+            var lookup = new Dictionary<string, string> {
+                {"english", "en-US"},
+                {"german", "de-DE"}
+            };
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = lookup[Preferences.DisplayLanguage];
+            Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", lookup[Preferences.DisplayLanguage]);
+
+            if (_listenersSet) {
+                Logger.Log("[Configuration]", "<- Initialize");
+                return;
+            }
+            
+            _listenersSet = true;
+            Preferences.LanguageChanged += Initialize;
+            Logger.Log("[Configuration]", "<- Initialize");
+        }
+    }
+}

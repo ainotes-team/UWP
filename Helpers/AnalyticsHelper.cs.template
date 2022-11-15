@@ -1,0 +1,23 @@
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using Helpers.Extensions;
+
+namespace Helpers {
+    public static class AnalyticsHelper {
+        private const string AnalyticsUsername = "***";
+        private const string AnalyticsPassword = "***";
+
+        private static readonly HttpClient HttpClient;
+        
+        private static readonly string SystemId;
+
+        static AnalyticsHelper() {
+            HttpClient = new HttpClient();
+            SystemId = SystemInfo.GetSystemId();
+        }
+
+        public static async void SendEvent(string eventType, string eventData=null) { }
+    }
+}
