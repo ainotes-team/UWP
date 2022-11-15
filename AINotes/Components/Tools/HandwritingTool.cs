@@ -260,8 +260,8 @@ namespace AINotes.Components.Tools {
                             Text = ResourceHelper.GetString("delete"),
                             Margin = new Thickness(12, 0, 12, 0),
                             Command = () => {
-                                // PenToolbarItems.Remove(selectedToolbarItem);
-                                // ((StackPanel) anchor.Parent).Children.Remove(this);
+                                PenToolbarItems.Remove(PenToolbarItems.ReverseLookup(penToolbarItemAnchor));
+                                ((StackPanel) penToolbarItemAnchor.Parent).Children.Remove(penToolbarItemAnchor);
                                 SavePens();
                                 CustomDropdown.CloseDropdown();
                             }
