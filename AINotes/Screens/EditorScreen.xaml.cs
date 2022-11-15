@@ -501,7 +501,7 @@ namespace AINotes.Screens {
                 Logger.Log("[EditorScreen]", "LoadLayout -> Task", logLevel: LogLevel.Verbose);
                 
                 void InkCanvasPointerPositionUpdate(object sender, PointerEventArgs args) {
-                    //_lastPointerPosition = new Point(args.CurrentPoint.Position.X - Scroll.HorizontalOffset, args.CurrentPoint.Position.Y - Scroll.VerticalOffset);
+                    _lastPointerPosition = new Point(args.CurrentPoint.Position.X - Scroll.HorizontalOffset, args.CurrentPoint.Position.Y - Scroll.VerticalOffset);
                 }
                 
                 // initialize all components
@@ -1050,7 +1050,7 @@ namespace AINotes.Screens {
             }
             
             try {
-                MainThread.InvokeOnMainThreadAsync(() => Document.Children.Add(component));
+                MainThread.BeginInvokeOnMainThread(() => Document.Children.Add(component));
             } catch (Exception e) {
                 Logger.Log("[EditorScreen]", "Error adding element of type", component, "with data", component.GetContent(), "and bounds", component.GetBounds(), "\ne:", e, logLevel: LogLevel.Error);
             }

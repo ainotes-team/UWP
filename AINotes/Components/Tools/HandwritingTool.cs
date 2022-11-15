@@ -79,9 +79,11 @@ namespace AINotes.Components.Tools {
             try {
                 if (penJson.StartsWith("{")) {
                     // legacy dict support
-                    PenModels = JsonConvert.DeserializeObject<Dictionary<int, PenModel>>(penJson).Select(kv => (kv.Key, kv.Value)).ToList();
+                    var deserialized = JsonConvert.DeserializeObject<Dictionary<int, PenModel>>(penJson)?.Select(kv => (kv.Key, kv.Value)) ?? new List<(int, PenModel)>();
+                    PenModels = deserialized.ToList();
                 } else {
-                    PenModels = JsonConvert.DeserializeObject<List<(int, PenModel)>>(penJson, settings)!.ToList();
+                    var deserialized = JsonConvert.DeserializeObject<List<(int, PenModel)>>(penJson, settings) ?? new List<(int, PenModel)>();
+                    PenModels = deserialized.ToList();
                 }
             } catch (Exception ex) {
                 Logger.Log("[HandwritingTool]", "LoadPenModels - Exception:", ex.ToString(), logLevel: LogLevel.Error);
@@ -293,23 +295,23 @@ namespace AINotes.Components.Tools {
                 
                 Logger.Log("Pressed");
             };
-            penToolbarItem.PressedAgain += (s, _) => {
+            penToolbarItem.PressedAgain += (pressedItem, _) => {
                 Logger.Log("PressedAgain");
-                foreach (var (k, v) in PenToolbarItems) {
-                    if (v == s) {
-                        penModel = k;
+                foreach (var (model, tbi) in PenToolbarItems) {
+                    if (tbi == pressedItem) {
+                        penModel = model;
                     }
                 }
-                ShowPenSettingsDropdown((MDToolbarItem) s, penModel.Size, penModel.PenType, penModel.Color);
+                ShowPenSettingsDropdown((MDToolbarItem) pressedItem, penModel.Size, penModel.PenType, penModel.Color);
             };
-            penToolbarItem.RightPressed += (s, _) => {
+            penToolbarItem.RightPressed += (pressedItem, _) => {
                 Logger.Log("RightPressed");
-                foreach (var (k, v) in PenToolbarItems) {
-                    if (v == s) {
-                        penModel = k;
+                foreach (var (model, tbi) in PenToolbarItems) {
+                    if (tbi == pressedItem) {
+                        penModel = model;
                     }
                 }
-                ShowPenSettingsDropdown((MDToolbarItem) s, penModel.Size, penModel.PenType, penModel.Color);
+                ShowPenSettingsDropdown((MDToolbarItem) pressedItem, penModel.Size, penModel.PenType, penModel.Color);
             };
 
             if (PenToolbarItems.ContainsKey(penModel)) {

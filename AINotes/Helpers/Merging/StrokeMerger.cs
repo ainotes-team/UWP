@@ -98,6 +98,7 @@ namespace AINotes.Helpers.Merging {
                 App.EditorScreen.GetInkCanvas().InkPresenter.StrokeContainer.DeleteSelected();
                 App.EditorScreen.GetInkCanvas().InkPresenter.StrokeContainer.AddStrokes(strokesToAdd);
 
+                Logger.Log(("[StrokeMerger]", "TODO: Handle", strokesToChange));
                 // foreach (var inkStroke in App.EditorScreen.GetInkCanvas().InkPresenter.StrokeContainer.GetStrokes()) {
                 //     InkStroke remoteInkStroke = null;
                 //     
