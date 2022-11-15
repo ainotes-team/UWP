@@ -39,15 +39,14 @@ namespace Helpers {
         };
 
         private static StreamWriter _loggingStream;
-        private static readonly HttpClient HttpClient = new HttpClient();
 
         private const int TagLength = 36;
         private static LogLevel MinimumLogLevel => (LogLevel) Enum.Parse(typeof(LogLevel), UserPreferenceHelper.Get("MinimumLogLevel", LogLevel.Timing.ToString()));
         private static bool LoggingEnabled => true; // Preferences.LoggingEnabled;
-        private static bool WriteToFile { get; } = true;
-        
-        private static bool LogThreadingInfo { get; } = true;
-        private static bool LogTime { get; } = true;
+        private static bool WriteToFile => true;
+
+        private static bool LogThreadingInfo => true;
+        private static bool LogTime => true;
 
         // actual logger
         private static void InternalLog(string l) {

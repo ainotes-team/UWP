@@ -45,43 +45,48 @@ namespace AINotes.Screens {
             Logger.Log("[EditorScreen]", "<- LoadShortcuts", logLevel: LogLevel.Verbose);
         }
 
-        private void MoveToForegroundShortcut() {
-            if (!ShouldExecute()) return;
+        private bool MoveToForegroundShortcut() {
+            if (!ShouldExecute()) return false;
 
             var documentComponents = App.EditorScreen.GetDocumentComponents();
-            if (documentComponents.Count == 0) return;
+            if (documentComponents.Count == 0) return false;
             var currentMaxZIndex = documentComponents.Max(Canvas.GetZIndex);
             
             foreach (var pl in App.EditorScreen.GetDocumentComponents().Where(pl => pl.IsSelected)) {
                 Canvas.SetZIndex(pl, currentMaxZIndex + 1);
             }
+
+            return true;
         }
 
-        private void MoveToBackgroundShortcut() {
-            if (!ShouldExecute()) return;
+        private bool MoveToBackgroundShortcut() {
+            if (!ShouldExecute()) return false;
 
             var currentMinZIndex = App.EditorScreen.GetDocumentComponents().Min(Canvas.GetZIndex);
             
             foreach (var pl in App.EditorScreen.GetDocumentComponents().Where(pl => pl.IsSelected)) {
                 Canvas.SetZIndex(pl, currentMinZIndex - 1);
             }
+
+            return true;
         }
 
-        private void ResetZoomShortcut() {
-            if (!ShouldExecute()) return;
+        private bool ResetZoomShortcut() {
+            if (!ShouldExecute()) return false;
 
             App.EditorScreen.Scroll.ChangeView(0f, 0f, 1.0f);
+            return true;
         }
 
-        private void DeleteShortcut() {
-            if (!ShouldExecute()) return;
+        private bool DeleteShortcut() {
+            if (!ShouldExecute()) return false;
 
             // check if a selection exists
             if (App.EditorScreen._selectionComponent == null) {
-                if (SelectedContent.Count != 1) return;
+                if (SelectedContent.Count != 1) return false;
                 SelectedContent[0].SetDeleted(true);
                 ContentChanged = true;
-                return;
+                return false;
             }
 
             // delete the selection component which deletes its contents
@@ -89,53 +94,61 @@ namespace AINotes.Screens {
 
             // the document has changed
             ContentChanged = true;
+            return true;
         }
 
         // select all elements
-        private void SelectAllShortcut() {
-            if (!ShouldExecute()) return;
+        private bool SelectAllShortcut() {
+            if (!ShouldExecute()) return false;
             
             InkCanvas.SelectAll();
+            return true;
         }
         
         // Undo
-        private void UndoShortcut() {
-            if (!ShouldExecute()) return;
+        private bool UndoShortcut() {
+            if (!ShouldExecute()) return false;
             
             UserActionManager.Undo();
+            return true;
         }
         
         // Redo
-        private void RedoShortcut() {
-            if (!ShouldExecute()) return;
+        private bool RedoShortcut() {
+            if (!ShouldExecute()) return false;
             
             UserActionManager.Redo();
+            return true;
         }
 
-        private void InvertSelectionShortcut() {
-            if (!ShouldExecute()) return;
+        private bool InvertSelectionShortcut() {
+            if (!ShouldExecute()) return false;
             
             InkCanvas.InvertSelection();
             foreach (var component in App.EditorScreen.GetDocumentComponents().ToList()) {
                 component.IsSelected = !component.IsSelected;
             }
+            return true;
         }
 
-        private void CopyShortcut() {
-            if (!ShouldExecute()) return;
+        private bool CopyShortcut() {
+            if (!ShouldExecute()) return false;
             _selectionComponent.Copy();
+            return true;
         }
 
-        private void CutShortcut() {
-            if (!ShouldExecute()) return;
+        private bool CutShortcut() {
+            if (!ShouldExecute()) return false;
             _selectionComponent.Cut();
+            return true;
         }
 
-        private void PasteShortcut() {
-            if (!ShouldExecute()) return;
+        private bool PasteShortcut() {
+            if (!ShouldExecute()) return false;
             var (touchX, touchY) = _lastPointerPosition;
             var resultPoint = new Point(touchX, touchY);
             ClipboardManager.Paste(resultPoint);
+            return true;
         }
     }
 }

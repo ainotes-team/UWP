@@ -23,16 +23,24 @@ namespace AINotes {
         private void RegisterShortcuts() {
             // global shortcuts
             Shortcuts.AddShortcut(new ShortcutModel(() => Preferences.FeedbackShortcut, "global_feedbackScreen", () => {
-                if (Page.Content == FeedbackScreen) return;
+                if (Page.Content == FeedbackScreen) return false;
                 CustomDropdown.CloseDropdown();
                 Page.Load(FeedbackScreen);
+                return true;
             }));
-            Shortcuts.AddShortcut(new ShortcutModel(() => Preferences.FullscreenShortcut, "global_fullscreen", Fullscreen.Toggle));
+            Shortcuts.AddShortcut(new ShortcutModel(() => Preferences.FullscreenShortcut, "global_fullscreen", () => {
+                Fullscreen.Toggle();
+                return true;
+            }));
             Shortcuts.AddShortcut(new ShortcutModel(() => Preferences.CancelShortcut, "global_closePopups", () => {
                 MDPopup.CloseCurrentPopup();
                 CustomDropdown.CloseDropdown();
+                return true;
             }));
-            Shortcuts.AddShortcut(new ShortcutModel(() => new List<string> { "Menu", "Left" }, "global_back", Page.GoBack));
+            Shortcuts.AddShortcut(new ShortcutModel(() => new List<string> { "Menu", "Left" }, "global_back", () => {
+                Page.GoBack();
+                return true;
+            }));
             
             // test shortcuts
             #if DEBUG
@@ -117,6 +125,7 @@ namespace AINotes {
                 }
 
                 new MDContentPopup("Moodle Login", content, okCallback, closeOnOk: false, cancelable: true, okText: "Login", closeWhenBackgroundIsClicked: true).Show();
+                return true;
             }));
             #endif
 
@@ -151,6 +160,7 @@ namespace AINotes {
                     t.Elapsed += OnTimerElapsed;
                     t.Start();
                 });
+                return true;
             }));
         }
     }

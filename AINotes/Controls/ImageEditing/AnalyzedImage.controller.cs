@@ -172,14 +172,17 @@ namespace AINotes.Controls.ImageEditing {
                     BottomLeft = new Point(bottomLeftX,  bottomLeftY);
                     
                     if (crop) Transform(TopLeft, TopRight, BottomRight, BottomLeft, setCropped);
-                } else {
-                    /*
+                }
+                /*
+                else {
+                    
                     TopLeft = new Point(0,  0);
                     TopRight = new Point(ImageSize.Width,  0);
                     BottomRight = new Point(ImageSize.Width,  ImageSize.Height);
                     BottomLeft = new Point(0,  ImageSize.Height);
-                    */
+                    
                 }
+                */
             });
         }
 

@@ -6,7 +6,6 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using AINotes.Controls.Input;
-using AINotes.Models;
 using Helpers.Essentials;
 
 namespace AINotes.Helpers.PreferenceHelpers {

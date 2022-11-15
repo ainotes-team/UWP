@@ -7,10 +7,13 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 using AINotes.Models;
 using Helpers;
+using Helpers.Extensions;
 using Helpers.Lists;
 
 namespace AINotes.Helpers {
     public static class Shortcuts {
+        private const bool VerboseLogging = true;
+        
         public static event Action EnterPressed;
         
         public static readonly List<VirtualKey> PressedKeys = new List<VirtualKey>();
@@ -30,7 +33,7 @@ namespace AINotes.Helpers {
         
         private static void OnKeyDown(object o, KeyRoutedEventArgs args) {
             if (PressedKeys.Contains(args.Key)) return;
-            // Logger.Log("[Shortcuts]", "KeyDown:", args.Key, "|", PressedKeys.ToFString());
+            if (VerboseLogging) Logger.Log("[Shortcuts]", "KeyDown:", args.Key, "|", PressedKeys.ToFString());
             if (args.Key == VirtualKey.Enter) EnterPressed?.Invoke();
             
             PressedKeys.Add(args.Key);
@@ -39,8 +42,8 @@ namespace AINotes.Helpers {
             // shortcut check
             foreach (var sM in RegisteredShortcuts.Select(sM => new {sM, equal = sM.Keys.All(keyString => PressedKeys.Contains((VirtualKey) Enum.Parse(typeof(VirtualKey), keyString)))}).Where(t => t.equal).Select(t => t.sM)) {
                 Logger.Log("[Shortcuts]", "Executing Shortcut", sM.Identifier);
-                sM.Action?.Invoke();
-                args.Handled = true;
+                var handled = sM.Action?.Invoke() ?? false;
+                args.Handled = handled;
                 if (sM.ReturnAfter) break;
             }
 
@@ -49,15 +52,15 @@ namespace AINotes.Helpers {
             foreach (var (sqKeyString, sq) in RegisteredSequences.Select(itm => (string.Join(" ", itm.Keys).ToLowerInvariant(), itm))) {
                 if (!lastKeysString.EndsWith(sqKeyString)) continue;
                 Logger.Log("[Shortcuts]", "Executing Sequence", sq.Identifier);
-                sq.Action?.Invoke();
-                args.Handled = true;
+                var handled = sq.Action?.Invoke() ?? false;
+                args.Handled = handled;
                 if (sq.ReturnAfter) break;
             }
         }
 
         private static void OnKeyUp(object o, KeyRoutedEventArgs args) {
             if (!PressedKeys.Contains(args.Key)) return;
-            // Logger.Log("[Shortcuts]", "KeyUp:", args.Key, "|", PressedKeys.ToFString());
+            if (VerboseLogging) Logger.Log("[Shortcuts]", "KeyUp:", args.Key, "|", PressedKeys.ToFString());
             PressedKeys.Remove(args.Key);
         }
 

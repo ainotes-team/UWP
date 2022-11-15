@@ -16,9 +16,10 @@ namespace AINotes.Screens {
             Shortcuts.AddShortcut(new ShortcutModel(() => Preferences.CancelShortcut, "closeCameraScreen", CloseShortcut));
         }
 
-        private void CloseShortcut() {
-            if (!ShouldExecute()) return;
+        private bool CloseShortcut() {
+            if (!ShouldExecute()) return false;
             App.Page.GoBack();
+            return true;
         }
     }
 }

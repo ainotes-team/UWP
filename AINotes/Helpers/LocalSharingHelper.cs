@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -201,7 +202,18 @@ namespace AINotes.Helpers {
             
             // unpack
             var newFileModel = JsonConvert.DeserializeObject<FileModel>(initialFileModel);
+            if (newFileModel == null) {
+                Logger.Log("[LocalSharingHelper]", $"Receiver: Received Invalid FileModel", logLevel: LogLevel.Warning);
+                Update("Error:\nDeserialisierung fehlgeschlagen.");
+                return;
+            }
+            
             var newFileComponents = JsonConvert.DeserializeObject<List<ComponentModel>>(newFileModel.ComponentModels);
+            if (newFileComponents == null) {
+                Logger.Log("[LocalSharingHelper]", $"Receiver: Received Invalid FileComponents", logLevel: LogLevel.Warning);
+                Update("Error:\nDeserialisierung fehlgeschlagen.");
+                return;
+            }
             
             // create file
             var newFileId = await FileHelper.CreateFileAsync(newFileModel.Name, newFileModel.Subject, App.FileManagerScreen.CurrentDirectory.DirectoryId);
@@ -325,7 +337,7 @@ namespace AINotes.Helpers {
                     updatedModel.LiveId = component.LiveId;
 
                     // serialize document component data
-                    if (component is ImageComponent documentComponent) {
+                    if (component is ImageComponent /*documentComponent*/) {
                         // TODO: Fix
                         // updatedModel.Content = documentComponent.Data.Serialize();
                     }
@@ -449,6 +461,7 @@ namespace AINotes.Helpers {
                         Logger.Log("[LocalSharingHelper]", "ComponentUpdated", updateContentString.Truncate(50, "..."));
                         var updatedComponentModel = JsonConvert.DeserializeObject<ComponentModel>(updateContentString);
                         MainThread.BeginInvokeOnMainThread(() => {
+                            if (updatedComponentModel == null) return;
                             var updatedComponent = App.EditorScreen.GetDocumentComponents().FirstOrDefault(v => v.LiveId == updatedComponentModel.LiveId);
                             if (updatedComponent == null) return;
                             if (updatedComponentModel.Content == null || (updatedComponent is ImageComponent && updatedComponentModel.Content == "null")) return;
