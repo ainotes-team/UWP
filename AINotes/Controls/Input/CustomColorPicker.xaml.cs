@@ -8,6 +8,7 @@ using AINotes.Helpers.Imaging;
 using Helpers;
 using Helpers.Controls;
 using Helpers.Extensions;
+using Helpers.Essentials;
 
 namespace AINotes.Controls.Input {
     public partial class CustomColorPicker {
@@ -40,6 +41,7 @@ namespace AINotes.Controls.Input {
         public event Action<Color> ColorSelected;
 
         public CustomColorPicker(string selectHexColor = null, bool showPlus = false) {
+            CustomColors = SavedStatePreferenceHelper.Get("customPenColors", "[]").Deserialize<ArrayList>();
             ColumnSpacing = RowSpacing = 6;
 
             RowDefinitions.AddRange(new [] {
@@ -115,6 +117,7 @@ namespace AINotes.Controls.Input {
                 }
                 CustomColors.Add(color.ToHex());
                 ColorSelected?.Invoke(color);
+                SavedStatePreferenceHelper.Set("customPenColors", CustomColors.Serialize());
             });
             popup.Show();
         }
