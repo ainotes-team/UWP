@@ -65,7 +65,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Xaml" />
     <Reference Include="Windows">
-      <HintPath>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))\UnionMetadata\10.0.18362.0\Windows.winmd</HintPath>
+      <HintPath>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))\UnionMetadata\10.0.22000.0\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
