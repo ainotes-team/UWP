@@ -354,7 +354,7 @@ namespace AINotes {
             SentrySdk.AddBreadcrumb(message, level: BreadcrumbLevel.Critical);
             SentrySdk.CaptureException(exception);
             SentrySdk.FlushAsync(TimeSpan.FromSeconds(2)).GetAwaiter().GetResult();
-            SentrySdk.EndSession();
+            SentrySdk.EndSession(SessionEndStatus.Crashed);
             SentrySdk.Close();
             #endif
         }
