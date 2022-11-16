@@ -271,6 +271,7 @@ namespace AINotes.Controls {
         /// invoked as soon as the pointer is staying in a circle with a specific radius ToleranceRadius
         private void OnConversionTimerTick(object _, object __) {
             Logger.Log("[CustomInkCanvas]", "OnConversionTimerClick", logLevel: LogLevel.Debug);
+            if (!Preferences.LongPressConversionEnabled) return;
             
             try {
                 if (_convertingToShape) return;

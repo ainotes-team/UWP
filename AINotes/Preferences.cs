@@ -108,7 +108,6 @@ namespace AINotes {
         public static readonly IntegerPreference InkConversionTime = new IntegerPreference("Ink Conversion Long Press Time", 200);
         public static readonly BooleanPreference InkAdjustLines = new BooleanPreference("Ink Conversion Adjust Lines", true);
         public static readonly BooleanPreference MarkerInkConversionEnabled = new BooleanPreference("Convert Marker Ink");
-        public static readonly BooleanPreference ConvertToLinesOnButtonPress = new BooleanPreference("Enable Line Conversion On Button Press");
         public static readonly DoublePreference ConversionThreshold = new DoublePreference("Conversion Threshold (0 - 100)", 92);
         public static readonly DoublePreference MinPenSize = new DoublePreference("Min. Pen Size", 1.0);
         public static readonly DoublePreference MaxPenSize = new DoublePreference("Max. Pen Size", 20.0);
@@ -295,7 +294,6 @@ namespace AINotes {
                         InkConversionTime,
                         InkAdjustLines,
                         MarkerInkConversionEnabled,
-                        ConvertToLinesOnButtonPress,
                         ConversionThreshold,
                         MinPenSize,
                         MaxPenSize,
