@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using AINotes.Helpers;
 using Helpers;
-using Newtonsoft.Json.Linq;
 using File = System.IO.File;
 
 namespace AINotes.Screens {

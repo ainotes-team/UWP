@@ -93,12 +93,12 @@ namespace Helpers {
         }
 
         public static async Task<byte[]> ReadBytes(string path) {
-            using (var stream = File.Open(ToAbsolutePath(path), FileMode.Open, FileAccess.Read, FileShare.Read)) {
-                var result = new byte[stream.Length];
-                await stream.ReadAsync(result, 0, (int) stream.Length);
-            }
+            // using (var stream = File.Open(ToAbsolutePath(path), FileMode.Open, FileAccess.Read, FileShare.Read)) {
+            //     var result = new byte[stream.Length];
+            //     await stream.ReadAsync(result, 0, (int) stream.Length);
+            // }
 
-            return File.ReadAllBytes(ToAbsolutePath(path));
+            return await File.ReadAllBytesAsync(ToAbsolutePath(path));
         }
 
 

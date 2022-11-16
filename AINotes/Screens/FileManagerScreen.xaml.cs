@@ -198,7 +198,7 @@ namespace AINotes.Screens {
             void OnFilterChipSelectionChanged() {
                 var selectedLabelIds = new List<int>();
                 foreach (var itm in FilterChips.Children) {
-                    if (itm is MDFilterChip rb && rb.IsSelected) {
+                    if (itm is MDFilterChip {IsSelected: true} rb) {
                         selectedLabelIds.Add(optionDict[rb]);
                     }
                 }

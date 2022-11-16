@@ -113,9 +113,7 @@ namespace AINotes.Screens {
             labels.Reverse();
             var itr = 0;
             StackPanel currentStack = null;
-            foreach (var label in labels) {
-                if (label.Archived) continue;
-                
+            foreach (var label in labels.Where(label => !label.Archived)) {
                 // Logger.Log(itr, "=>", itr % 3);
                 if (itr % 3 == 0) {
                     currentStack = new StackPanel {
@@ -959,10 +957,8 @@ namespace AINotes.Screens {
                 MainThread.BeginInvokeOnMainThread(() => {
                     invitationsView.SetInvitations(FileMerger.Invitations.Select(pair =>
                         new Invitation(pair.Value.Name, pair.Key.PermissionId, pair.Key.UserPermission)).ToArray());
-                    if (FileMerger.Invitations.Count == 0) {
-                        PopupNavigation.CloseCurrentPopup();
-                        return;
-                    }
+                    if (FileMerger.Invitations.Count != 0) return;
+                    PopupNavigation.CloseCurrentPopup();
                 });
             };
 

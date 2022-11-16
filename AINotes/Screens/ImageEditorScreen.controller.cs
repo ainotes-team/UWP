@@ -60,7 +60,7 @@ namespace AINotes.Screens {
         }
 
         private async void SetCurrentImageBytes(byte[] imageBytes) {
-            if (imageBytes == null) throw new ArgumentNullException(nameof(_currentImageBytes), @$"{nameof(_currentImageBytes)} cannot be null");
+            if (imageBytes == null) throw new ArgumentNullException(nameof(imageBytes), @$"{nameof(imageBytes)} cannot be null");
             Logger.Log("[ImageEditorScreen]", "SetCurrentImageBytes");
             _currentImageBytes = imageBytes;
             

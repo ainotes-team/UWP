@@ -181,11 +181,7 @@ namespace AINotes.Helpers.PreferenceHelpers {
                         ((MDToolbarItem) ((StackPanel) ((StackPanel) _subjectFrames[model].Content).Children[1]).Children[1]).Released += (_, _) => DeleteLabel(newItem);
                     }
                 } catch (InvalidCastException ex) {
-#if DEBUG
-                    throw;
-#else
                     Logger.Log("[CustomLabelListPreference]", "EditLabels: UI Updated failed (InvalidCastException):", ex, logLevel: LogLevel.Error);
-#endif
                 }
 
                 var frame = _subjectFrames[model];

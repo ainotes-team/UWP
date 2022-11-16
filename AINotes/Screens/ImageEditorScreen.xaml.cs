@@ -191,15 +191,17 @@ namespace AINotes.Screens {
             }
         }
 
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void EnterViewMode([CallerMemberName] string callerMemberName=null) {
-            if (callerMemberName != nameof(UIMode)) throw new InvalidProgramException(@$"{nameof(EnterViewMode)} max only be called by {UIMode}.");
+            if (callerMemberName != nameof(UIMode)) throw new InvalidProgramException(@$"{nameof(EnterViewMode)} max only be called by {nameof(UIMode)}.");
             Logger.Log("[ImageEditorScreen]", "EnterViewMode");
             
             // TODO: Disable Buttons
         }
 
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void EnterTransformMode([CallerMemberName] string callerMemberName=null) {
-            if (callerMemberName != nameof(UIMode)) throw new InvalidProgramException(@$"{nameof(EnterTransformMode)} max only be called by {UIMode}.");
+            if (callerMemberName != nameof(UIMode)) throw new InvalidProgramException(@$"{nameof(EnterTransformMode)} max only be called by {nameof(UIMode)}.");
             Logger.Log("[ImageEditorScreen]", "EnterTransformMode");
 
             // calculate ratios & corners
@@ -264,6 +266,7 @@ namespace AINotes.Screens {
             _nobBottomRight.PreprocessNewPosition = PreprocessNewPosition;
         }
 
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void EnterCropMode([CallerMemberName] string callerMemberName=null) {
             if (callerMemberName != nameof(UIMode)) throw new InvalidProgramException(@$"{nameof(EnterCropMode)} max only be called by {UIMode}.");
             Logger.Log("[ImageEditorScreen]", "EnterCropMode");

@@ -325,8 +325,7 @@ namespace AINotes.Components {
         }
         
         protected void ResetTouchStartBounds() => TouchStartBounds = new RectangleD(-1, -1, -1, -1);
-        private Point _lastKnownOnNobPosition;
-        
+
         private void OnResizingNobTouch(object o, WTouchEventArgs args) {
             if (!args.InContact && args.ActionType != WTouchAction.Released) {
                 IsResizing = false;
@@ -337,7 +336,7 @@ namespace AINotes.Components {
             switch (args.ActionType) {
                 case WTouchAction.Pressed:
                     CustomDropdown.CloseDropdown();
-                    _lastKnownOnNobPosition = TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
+                    TouchTrackingStart = new Point(args.Location.X, args.Location.Y);
                     TouchStartBounds = new RectangleD(_x, _y, GetWidth(), GetHeight());
 
                     IsResizing = true;
@@ -352,15 +351,12 @@ namespace AINotes.Components {
                         var height = GetHeight();
 
                         // if proportional resizing
-                        if (Shortcuts.PressedKeys.Contains(VirtualKey.Control)) {
-                            var cursorSlope = -1;
+                        if (Shortcuts.PressedKeys.Any(key => key.Equals(VirtualKey.Shift))) {
+                            const int cursorSlope = -1;
                             var componentSlope = TouchStartBounds.Height / TouchStartBounds.Width;
 
                             var newXOnNob = args.Location.X;
                             var newYOnNob = args.Location.Y;
-
-                            // var startXOnNob = _lastKnownOnNobPosition.X;
-                            // var startYOnNob = _lastKnownOnNobPosition.Y;
 
                             var cursorStraight = new GeometryStraight(new GeometryPoint(newXOnNob, newYOnNob), cursorSlope);
                             var componentStraight = new GeometryStraight(new GeometryPoint(0, 0), componentSlope);
@@ -370,8 +366,6 @@ namespace AINotes.Components {
                             if (width + intersection.X >= MinWidth && height + intersection.Y >= MinHeight) {
                                 width += intersection.X;
                                 height += intersection.Y;
-
-                                _lastKnownOnNobPosition = new Point(newXOnNob, newYOnNob);
                             }
                         } else {
                             if (GetWidth() - (TouchTrackingStart.X - args.Location.X) >= MinWidth) {

@@ -24,7 +24,7 @@ namespace AINotes {
         
         static CloudAdapter() {
             SynchronizationService.Init(Preferences.ServerUrl);
-            SynchronizationService.Start();
+            Task.Run(SynchronizationService.Start);
 
             SynchronizationService.Started += OnSynchronizationServiceStarted;
 
@@ -88,7 +88,7 @@ namespace AINotes {
         private static void OnServerUrlPreferenceChanged() {
             UnsubscribeFromRemote();
             SynchronizationService.Init(Preferences.ServerUrl);
-            SynchronizationService.Start();
+            Task.Run(SynchronizationService.Start);
         }
 
 
@@ -195,7 +195,7 @@ namespace AINotes {
             return await SynchronizationService.CloudApi.TokenLogin();
         }
 
-        public static void Restart() => SynchronizationService.Restart();
+        public static void Restart() => Task.Run(SynchronizationService.Restart);
 
         public static void Logout() => SynchronizationService.PlaceLogout();
 
