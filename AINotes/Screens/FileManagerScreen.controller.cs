@@ -96,7 +96,7 @@ namespace AINotes.Screens {
 
         public async void LoadDirectories() {
             if (LoadingDirectories) return;
-            if (App.Page.Content != App.FileManagerScreen) return;
+            // if (App.Page.Content != App.FileManagerScreen) return;
             LoadingDirectories = true;
             Logger.Log("[FileManagerScreen]", "-> LoadDirectories", logLevel: LogLevel.Verbose);
 
