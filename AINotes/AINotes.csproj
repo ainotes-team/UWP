@@ -288,6 +288,7 @@
     <Compile Include="Helpers\PreferenceHelpers\SidebarStatePreference.cs" />
     <Compile Include="Helpers\PreferenceHelpers\StringListPreference.cs" />
     <Compile Include="Helpers\PreferenceHelpers\StringPreference.cs" />
+    <Compile Include="Helpers\SentryHelper.cs" />
     <Compile Include="Helpers\Shortcuts.cs" />
     <Compile Include="Helpers\Sidebar\RepresentationPlan\Implementations\DavinciParser.cs" />
     <Compile Include="Helpers\Sidebar\RepresentationPlan\IRepresentationPlanParser.cs" />

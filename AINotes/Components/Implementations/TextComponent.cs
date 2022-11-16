@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using AINotes.Components.Tools;
 using AINotes.Controls.Pages;
+using AINotes.Helpers;
 using AINotes.Helpers.UserActions;
 using Helpers.Essentials;
 using Helpers.Extensions;
@@ -253,6 +254,7 @@ namespace AINotes.Components.Implementations {
                 return base.ArrangeOverride(_lastMeasure == Size.Empty ? MeasureOverride(finalSize) : _lastMeasure);
             } catch (Exception ex) {
                 Logger.Log("[CustomRichEditor]", "Error in ArrangeOverride:", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
                 return Size.Empty;
             }
         }

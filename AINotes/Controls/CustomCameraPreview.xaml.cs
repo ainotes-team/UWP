@@ -6,6 +6,7 @@ using Windows.Graphics.Display;
 using Windows.Media.Capture;
 using Windows.System.Display;
 using Windows.UI.Core;
+using AINotes.Helpers;
 using Helpers;
 using Helpers.Essentials;
 using MaterialComponents;
@@ -52,15 +53,17 @@ namespace AINotes.Controls {
                 _displayRequest.RequestActive();
                 PreviewControl.Source = _mediaCapture;
                 DisplayInformation.AutoRotationPreferences = DisplayOrientations.Landscape;
-            } catch (UnauthorizedAccessException) {
+            } catch (UnauthorizedAccessException ex) {
                 App.Page.Load(App.EditorScreen);
                 Logger.Log("[CustomCameraPreview]", "StartPreviewAsync: Access to the camera is not allowed.", logLevel: LogLevel.Warning);
                 App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access the camera. (Unauthorized)"));
+                SentryHelper.CaptureCaughtException(ex);
                 return;
             } catch (Exception ex) {
                 Logger.Log("[CustomCameraPreview]", $"StartPreviewAsync: Accessing the camera failed:", ex, logLevel: LogLevel.Error);
                 App.Page.Load(App.EditorScreen);
                 App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access the camera."));
+                SentryHelper.CaptureCaughtException(ex);
                 return;
             }
 

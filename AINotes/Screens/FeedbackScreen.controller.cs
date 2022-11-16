@@ -48,6 +48,7 @@ namespace AINotes.Screens {
                 updateCallback?.Invoke("Sent successfully!");
             } catch (Exception ex) {
                 Logger.Log("[FeedbackScreen]", "Exception in sendLogsButtonCommand: ", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
 

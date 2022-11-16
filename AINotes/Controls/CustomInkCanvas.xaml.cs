@@ -214,6 +214,7 @@ namespace AINotes.Controls {
                 }
             } catch (Exception ex) {
                 Logger.Log("[CustomInkCanvas]", "Error in CopyStrokesAndShapes:", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
 
@@ -257,6 +258,7 @@ namespace AINotes.Controls {
                 });
             } catch (Exception ex) {
                 Logger.Log("[CustomInkCanvas]", "Error in CopyStrokesAndShapes:", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
             }
 
             return new UserAction(objects => {
@@ -701,6 +703,7 @@ namespace AINotes.Controls {
                 App.EditorScreen.OnComponentNobMoving(new Point(args.CurrentPoint.RawPosition.X, args.CurrentPoint.RawPosition.Y));
             } catch (Exception ex) {
                 Logger.Log("[CustomInkCanvas]", "UnprocessedPointerMoved - Exception:", ex.ToString());
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
 
@@ -934,6 +937,7 @@ namespace AINotes.Controls {
                 _lastPoint = args.CurrentPoint.Position;
             } catch (Exception ex) {
                 Logger.Log("[CustomInkCanvas]", "StrokeContinued - Exception:", ex.ToString());
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
 

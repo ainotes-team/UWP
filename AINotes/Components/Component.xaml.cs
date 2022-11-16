@@ -149,6 +149,7 @@ namespace AINotes.Components {
                     args.Cancel = true;
                 } catch (Exception ex) {
                     Logger.Log("Exception in PreventFocusLossToAny", ex, logLevel: LogLevel.Error);
+                    SentryHelper.CaptureCaughtException(ex);
                 }
             }
             

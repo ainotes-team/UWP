@@ -483,7 +483,7 @@ namespace AINotes.Screens {
                 await SaveFile();
             } catch (InvalidOperationException ex) {
                 Logger.Log("[EditorScreen]", "OnUnload: Error while Saving File", ex.ToString(), logLevel: LogLevel.Verbose);
-
+                SentryHelper.CaptureCaughtException(ex);
             }
 
             // reset the titlebar color
@@ -637,6 +637,7 @@ namespace AINotes.Screens {
                     OnCanvasTouch(new WTouchEventArgs(e.Id, e.ActionType, e.MouseButton, e.DeviceType, new Point((float) (e.Location.X * DeviceProperties.DisplayDensity), (float) (e.Location.Y * DeviceProperties.DisplayDensity)), e.InContact, e.Pointer, e.Handled));
                 } catch (Exception ex) {
                     Logger.Log("[EditorScreen]", "OnCanvasTouch Exception:", ex.ToString(), logLevel: LogLevel.Error);
+                    SentryHelper.CaptureCaughtException(ex);
                 }
             }
             TouchHelper.SetTouchEventHandler(Document, TouchAction);
@@ -974,6 +975,7 @@ namespace AINotes.Screens {
                 await SaveFile();
             } catch (Exception ex) {
                 Logger.Log("[EditorScreen]", "Exception during QuickSave:", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
             }
 
             _lastQuickSave = Time.CurrentTimeMillis();
@@ -1053,6 +1055,7 @@ namespace AINotes.Screens {
                 MainThread.BeginInvokeOnMainThread(() => Document.Children.Add(component));
             } catch (Exception e) {
                 Logger.Log("[EditorScreen]", "Error adding element of type", component, "with data", component.GetContent(), "and bounds", component.GetBounds(), "\ne:", e, logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(e);
             }
         }
 

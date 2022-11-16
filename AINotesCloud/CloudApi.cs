@@ -549,8 +549,7 @@ namespace AINotesCloud {
                     Logger.Log("[CloudApi]", "CloudApi.GetRemoteImage: Image not Found", logLevel: LogLevel.Warning);
                 }
             } catch (Exception ex) {
-                Logger.Log("[CloudApi]", "Exception in CloudApi.GetRemoteImage:", ex.ToString(),
-                    logLevel: LogLevel.Error);
+                Logger.Log("[CloudApi]", "Exception in CloudApi.GetRemoteImage:", ex.ToString(), logLevel: LogLevel.Error);
             }
 
             return false;

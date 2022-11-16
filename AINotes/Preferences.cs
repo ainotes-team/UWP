@@ -176,6 +176,7 @@ namespace AINotes {
                 } catch (Exception ex) {
                     Logger.Log("[Preferences]", "Exception in CreateBackup - Zip Creation:", ex.ToString(), logLevel: LogLevel.Error);
                     ((MDButton) CreateBackup.GetView()).Text = "Vorgang fehlgeschlagen. Bitte versuche es erneut oder kontaktiere den Support.";
+                    SentryHelper.CaptureCaughtException(ex);
                 }
 
                 ((MDButton) CreateBackup.GetView()).Text = "Vorgang beendet.";
@@ -188,7 +189,8 @@ namespace AINotes {
                             ((MDButton) CreateBackup.GetView()).Text = "Create Backup";
                             ((MDButton) CreateBackup.GetView()).IsEnabled = true;
                         } catch (Exception ex) {
-                            Logger.Log("[Preferences]", "Exception in CreateBackup - Button Restore:", ex.ToString());
+                            Logger.Log("[Preferences]", "Exception in CreateBackup - Button Reset:", ex.ToString());
+                            SentryHelper.CaptureCaughtException(ex);
                         }
                     });
                 });
@@ -326,12 +328,12 @@ namespace AINotes {
                         CustomLabels,
                     }
                 }, {
-                    "UserComponentSettings",
+                    "External Components",
                     new List<Preference> {
                         ExternalComponents,
                     }
                 }, {
-                    "Advanced",
+                    "Advanced Settings",
                     new List<Preference> {
                         DoubleTapTime,
                         LocalSharingEnabled,

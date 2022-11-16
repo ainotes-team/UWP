@@ -61,4 +61,7 @@
   <data name="copy" xml:space="preserve"><value>Kopieren</value></data>
   <data name="cut" xml:space="preserve"><value>Ausschneiden</value></data>
 
+  <data name="file_create" xml:space="preserve"><value>Datei bearbeiten</value></data>
+
+
 </root>

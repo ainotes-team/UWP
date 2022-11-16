@@ -24,6 +24,7 @@ namespace AINotes.Helpers {
                 clipboardContent = await Clipboard.GetContent();
             } catch (Exception ex) {
                 Logger.Log("[ClipboardManager]", "-> Paste: Exception on GetContent:", ex.ToString(), logLevel: LogLevel.Error);
+                SentryHelper.CaptureCaughtException(ex);
                 return;
             }
 

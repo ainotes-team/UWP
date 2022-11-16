@@ -1,6 +1,7 @@
 using System;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
+using AINotes.Helpers;
 using Helpers;
 using MaterialComponents;
 
@@ -18,6 +19,7 @@ namespace AINotes.Controls {
                 Logger.Log("[CustomCameraPreview]", "StartPreviewAsync: Capture failed:", ex, logLevel: LogLevel.Error);
                 App.Page.Load(App.EditorScreen);
                 App.Page.Notifications.Add(new MDNotification("Error:\nCapture failed. :("));
+                SentryHelper.CaptureCaughtException(ex);
             }
         } 
     }

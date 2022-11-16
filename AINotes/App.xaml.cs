@@ -276,6 +276,7 @@ namespace AINotes {
                         } catch (Exception ex) {
                             Logger.Log("[App]", "OnLaunched: Print - Waiting for Service - PrintInsert failed:", ex, logLevel: LogLevel.Error);
                             Page.Notifications.Add(new MDNotification("Insert failed. :("));
+                            SentryHelper.CaptureCaughtException(ex);
                         }
 
                         AppServiceConnected -= AppServiceWaiter;
@@ -289,6 +290,7 @@ namespace AINotes {
                     } catch (Exception ex) {
                         Logger.Log("[App]", "OnLaunched: Print - Inserting - PrintInsert failed:", ex, logLevel: LogLevel.Error);
                         Page.Notifications.Add(new MDNotification("Insert failed. :("));
+                        SentryHelper.CaptureCaughtException(ex);
                     }
                 }
             }

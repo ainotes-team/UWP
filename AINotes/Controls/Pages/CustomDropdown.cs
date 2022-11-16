@@ -84,8 +84,12 @@ namespace AINotes.Controls.Pages {
             App.Page.AbsoluteOverlay.AddChild(_currentDropdown, new Point(x, y));
         }
 
+        public static bool IsOpen() {
+            return _currentDropdown != null;
+        }
+        
         public static void CloseDropdown([CallerMemberName] string callerName=null, [CallerLineNumber] int callerLine=0) {
-            if (_currentDropdown == null) return;
+            if (!IsOpen()) return;
             Logger.Log("[CustomContentPage]", "CloseDropdown <=", callerName, "@", callerLine);
             App.Page.AbsoluteOverlay.Children.Remove(_currentDropdown);
             _currentDropdown = null;

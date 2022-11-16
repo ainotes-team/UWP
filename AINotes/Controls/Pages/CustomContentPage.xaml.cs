@@ -68,12 +68,13 @@ namespace AINotes.Controls.Pages {
         }
 
         private void OnGlobalTouch(object s, WTouchEventArgs e) {
+            if (!CustomDropdown.IsOpen()) return;
             if (!e.InContact) return;
             if (e.Id == -10 /* touches with id -10 are holding events not natively supported by the SKTouchEventArgs */) return;
             if (e.ActionType != WTouchAction.Pressed) return;
             if (e.Handled) return;
             if (CustomDropdown.DropdownProtection) {
-                Logger.Log("DropdownProtection");
+                Logger.Log("[CustomContentPage]", "OnGlobalTouch: DropdownProtection");
                 CustomDropdown.DropdownProtection = false;
                 return;
             }

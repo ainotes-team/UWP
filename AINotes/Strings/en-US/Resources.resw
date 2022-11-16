@@ -60,5 +60,7 @@
   <data name="delete" xml:space="preserve"><value>Delete</value></data>
   <data name="copy" xml:space="preserve"><value>Copy</value></data>
   <data name="cut" xml:space="preserve"><value>Cut</value></data>
+  
+  <data name="file_create" xml:space="preserve"><value>Edit File</value></data>
 
 </root>

@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using AINotes.Controls.Input;
 using AINotes.Controls.Pages;
+using AINotes.Helpers;
 using AINotes.Helpers.Imaging;
 using Helpers.Essentials;
 using AINotes.Models;
@@ -203,6 +204,7 @@ namespace AINotes.Components.Tools {
                 SavePens();
             } catch (Exception ex) {
                 Logger.Log("[HandwritingTool]", "UpdateCurrentPenModel - SavePens: Exception", ex.ToString(), logLevel: LogLevel.Warning);
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
         

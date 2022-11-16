@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using AINotes.Controls.ImageEditing;
+using AINotes.Helpers;
 using AINotes.Helpers.Extensions;
 using AINotes.Helpers.Imaging;
 using AINotes.Helpers.UserActions;
@@ -350,6 +351,7 @@ namespace AINotes.Components.Implementations {
                 Logger.Log("[ImageComponent]", $"OnModelChanged: ReadBytes failed ({model.Content}):", ex, logLevel: LogLevel.Error);
                 App.Page.Load(App.FileManagerScreen);
                 App.Page.Notifications.Add(new MDNotification($"Error:\nCannot access {model.Content}.\nIt is currently locked by another process."));
+                SentryHelper.CaptureCaughtException(ex);
             }
         }
     }

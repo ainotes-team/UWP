@@ -15,6 +15,8 @@ using AINotes.Models;
 using AINotesCloud;
 using MaterialComponents;
 using Newtonsoft.Json;
+using Sentry;
+using Sentry.Protocol;
 
 namespace AINotes {
     public partial class App {
@@ -77,6 +79,7 @@ namespace AINotes {
                                             }
                                         } catch (Exception ex) {
                                             Logger.Log("[App]", "OnActivated ainotes:local protocol exception:", ex, logLevel: LogLevel.Error);
+                                            SentryHelper.CaptureCaughtException(ex);
                                         }
 
                                         break;
@@ -170,6 +173,7 @@ namespace AINotes {
                                         } catch (Exception ex) {
                                             new MDContentPopup("Fehler", new MDLabel("Die angegeben URI konnte nicht geöffnet werden.")).Show();
                                             Logger.Log("[App]", "OnActivated ainotes:remote protocol exception:", ex, logLevel: LogLevel.Error);
+                                            SentryHelper.CaptureCaughtException(ex);
                                         }
 
                                         break;
@@ -232,6 +236,7 @@ namespace AINotes {
                 } catch (Exception ex) {
                     Page.Notifications.Add(new MDNotification($"Import failed:\n{ex}"));
                     Logger.Log("[App]", "OnFileActivated: Failed to import file: ", ex, logLevel: LogLevel.Error);
+                    SentryHelper.CaptureCaughtException(ex);
                 }
             }
 
