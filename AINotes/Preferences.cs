@@ -26,7 +26,7 @@ namespace AINotes {
         public static event Action ThemeChanged;
         
         // general
-        public static readonly StringListPreference DisplayLanguage = new StringListPreference("LanguageStrings.SDisplayLanguage", 
+        public static readonly StringListPreference DisplayLanguage = new StringListPreference("Display Language", 
             () => new [] {"german", "english"}, 
             "english", 
             () =>  LanguageChanged?.Invoke()
@@ -88,7 +88,7 @@ namespace AINotes {
         public static readonly BooleanPreference ShowPathInTitle = new BooleanPreference("Show Path in File Manager Title", true, () => App.FileManagerScreen.NavigateToDirectory(App.FileManagerScreen.CurrentDirectory));
 
         // edt
-        public static readonly BooleanPreference ColoredTitlebarEnabled = new BooleanPreference("LanguageStrings.SColoredTitlebar");
+        public static readonly BooleanPreference ColoredTitlebarEnabled = new BooleanPreference("Colored Titlebar");
         public static readonly EnumPreference<DocumentLineMode> BackgroundDefaultLineMode = new EnumPreference<DocumentLineMode>("Background Default Line Mode", DocumentLineMode.GridMedium);
 
         public static readonly DoublePreference ZoomMinScale = new DoublePreference("Zoom Min Scale", 1.0, () => {
@@ -103,12 +103,12 @@ namespace AINotes {
         }, 2.1, 10.0);
         
         // edt - drawing
-        public static readonly BooleanPreference LongPressConversionEnabled = new BooleanPreference("LanguageStrings.SConversionOnLongPress", true);
-        public static readonly IntegerPreference InkConversionTolerance = new IntegerPreference("LanguageStrings.SInkConversionTolerance", 5);
-        public static readonly IntegerPreference InkConversionTime = new IntegerPreference("LanguageStrings.SInkConversionTime", 200);
-        public static readonly BooleanPreference InkAdjustLines = new BooleanPreference("LanguageStrings.SAdjustLines");
-        public static readonly BooleanPreference MarkerInkConversionEnabled = new BooleanPreference("LanguageStrings.SConversionWithMarkerEnabled");
-        public static readonly BooleanPreference ConvertToLinesOnButtonPress = new BooleanPreference("LanguageStrings.SLineConversionOnButtonPressEnabled");
+        public static readonly BooleanPreference LongPressConversionEnabled = new BooleanPreference("Ink Conversion on Long Press", true);
+        public static readonly IntegerPreference InkConversionTolerance = new IntegerPreference("Ink Conversion Tolerance", 5);
+        public static readonly IntegerPreference InkConversionTime = new IntegerPreference("Ink Conversion Long Press Time", 200);
+        public static readonly BooleanPreference InkAdjustLines = new BooleanPreference("Ink Conversion Adjust Lines", true);
+        public static readonly BooleanPreference MarkerInkConversionEnabled = new BooleanPreference("Convert Marker Ink");
+        public static readonly BooleanPreference ConvertToLinesOnButtonPress = new BooleanPreference("Enable Line Conversion On Button Press");
         public static readonly DoublePreference ConversionThreshold = new DoublePreference("Conversion Threshold (0 - 100)", 92);
         public static readonly DoublePreference MinPenSize = new DoublePreference("Min. Pen Size", 1.0);
         public static readonly DoublePreference MaxPenSize = new DoublePreference("Max. Pen Size", 20.0);
@@ -136,9 +136,9 @@ namespace AINotes {
         public static readonly ShortcutPreference ReloadShortcut = new ShortcutPreference("Reload", new List<string> {"F5"});
         
         // theming
-        public static readonly StringPreference BackgroundCanvasLineColor = new StringPreference("LanguageStrings.SDrawingBackgroundLineColor", "#EFF0F1");
-        public static readonly StringPreference BackgroundCanvasColor = new StringPreference("Drawing Background Color (hex)", "#FFFFFF");
-        public static readonly IntegerPreference BackgroundCanvasOpacity = new IntegerPreference("Drawing Background Line Opacity (0 - 100)", 100);
+        public static readonly StringPreference BackgroundCanvasLineColor = new StringPreference("Background Line Color", "#EFF0F1");
+        public static readonly StringPreference BackgroundCanvasColor = new StringPreference("Background Color (hex)", "#FFFFFF");
+        public static readonly IntegerPreference BackgroundCanvasOpacity = new IntegerPreference("Background Line Opacity (0 - 100)", 100);
         
         public static readonly IntegerPreference BackgroundLineModeStepsSmall = new IntegerPreference("BackgroundLineModeSteps Small", 16);
         public static readonly IntegerPreference BackgroundLineModeStepsMedium = new IntegerPreference("BackgroundLineModeSteps Medium", 25);
@@ -147,21 +147,21 @@ namespace AINotes {
         public static readonly BooleanPreference UseAnimatedIcons = new BooleanPreference("Use animated icons where possible");
         
         // labels
-        public static readonly CustomLabelListPreference CustomLabels = new CustomLabelListPreference("LanguageStrings.SCustomSubjects");
+        public static readonly CustomLabelListPreference CustomLabels = new CustomLabelListPreference("Custom Labels");
         
         // user components
-        public static readonly ComponentListPreference ExternalComponents = new ComponentListPreference("LanguageStrings.SExternalComponents");
+        public static readonly ComponentListPreference ExternalComponents = new ComponentListPreference("External Components");
         
         // advanced
-        public static readonly BooleanPreference LocalSharingEnabled = new BooleanPreference("LanguageStrings.SLocalSharingEnabled", true, () => {
+        public static readonly BooleanPreference LocalSharingEnabled = new BooleanPreference("Enable Local Sharing", true, () => {
             if (LocalSharingEnabled) {
                 LocalSharingHelper.SocketService.StartBluetoothServer();
             } else {
                 LocalSharingHelper.SocketService.StopBluetoothServer();
             }
         });
-        public static readonly IntegerPreference DoubleTapTime = new IntegerPreference("LanguageStrings.SDoubleTapTimeInMs", 500);
-        public static readonly StringPreference ServerUrl = new StringPreference("LanguageStrings.SSynchronizationServer", "https://srv1.ainotes.xyz", () => Task.Run(SynchronizationService.Restart));
+        public static readonly IntegerPreference DoubleTapTime = new IntegerPreference("Double Tap Time (ms)", 500);
+        public static readonly StringPreference ServerUrl = new StringPreference("Synchronization Server", "https://srv1.ainotes.xyz", () => Task.Run(SynchronizationService.Restart));
 
         // backup & restore
         public static readonly InvocationPreference CreateBackup = new InvocationPreference("Create Backup", () => {
@@ -202,24 +202,24 @@ namespace AINotes {
 
 
         // developer
-        public static readonly BooleanPreference DeveloperModeEnabled = new BooleanPreference("LanguageStrings.SEnableDisableDeveloperMode");
+        public static readonly BooleanPreference DeveloperModeEnabled = new BooleanPreference("Enable / Disable Developer Mode");
         public static readonly BooleanPreference DebugLabelsEnabled = new BooleanPreference("Enable / Disable Debug Labels (should be used with Border Debug Mode enabled)");
         public static readonly BooleanPreference FocusDebugModeEnabled = new BooleanPreference("Enable / Disable Focus Debugging");
         
-        public static readonly BooleanPreference PartyModeEnabled = new BooleanPreference("LanguageStrings.SPartyMode");
+        public static readonly BooleanPreference PartyModeEnabled = new BooleanPreference("PartyMode!");
 
-        public static BooleanPreference LoggingEnabled => new BooleanPreference("LanguageStrings.SEnableDisableLogs", true);
-        public static StringListPreference MinimumLogLevel => new StringListPreference("LanguageStrings.SMinimumLogLevel", Enum.GetValues(typeof(LogLevel)).Cast<LogLevel>().Select(c => c.ToString()).ToArray(), LogLevel.Timing.ToString());
-        public static readonly BooleanPreference BorderDebugModeEnabled = new BooleanPreference("LanguageStrings.SBorderDebugMode");
+        public static BooleanPreference LoggingEnabled => new BooleanPreference("Enable / Disable Logs", true);
+        public static StringListPreference MinimumLogLevel => new StringListPreference("Minimal Logging Level", Enum.GetValues(typeof(LogLevel)).Cast<LogLevel>().Select(c => c.ToString()).ToArray(), LogLevel.Timing.ToString());
+        public static readonly BooleanPreference BorderDebugModeEnabled = new BooleanPreference("Border Debug Mode");
         
-        public static readonly InvocationPreference ClearPens = new InvocationPreference("LanguageStrings.SResetPens", () => SavedStatePreferenceHelper.Set("saved_pen_models", "{}"));
+        public static readonly InvocationPreference ClearPens = new InvocationPreference("Reset Saved Pens", () => SavedStatePreferenceHelper.Set("saved_pen_models", "{}"));
 
         public static readonly BooleanPreference QuickSavesEnabled = new BooleanPreference("Enable / Disable Auto Saves", true);
         public static readonly IntegerPreference QuickSavesInterval = new IntegerPreference("Auto Save Interval (in ms)", 1000);
         
-        public static readonly IntegerPreference ServerUpdateRequestTimeout = new IntegerPreference("LanguageStrings.SUpdateRequestInterval", 20);
+        public static readonly IntegerPreference ServerUpdateRequestTimeout = new IntegerPreference("Update Request Interval", 20);
         
-        public static readonly InvocationPreference RestartBluetoothServer = new InvocationPreference("LanguageStrings.SRestartBluetoothServer", null);
+        public static readonly InvocationPreference RestartBluetoothServer = new InvocationPreference("Restart Bluetooth Server", null);
         public static readonly InvocationPreference CleanDatabase = new InvocationPreference("Datenbank aufräumen", () => {
             new MDContentPopup(
                 "Möchtest du wirklich ungenutzte Einträge aus der Datenbank löschen?",
@@ -256,7 +256,7 @@ namespace AINotes {
         public static Dictionary<string, List<Preference>> GetSettings() {
             return new Dictionary<string, List<Preference>> {
                 {
-                    "LanguageStrings.SGeneral",
+                    "General",
                     new List<Preference> {
                         DisplayLanguage,
                         DisplayTheme,

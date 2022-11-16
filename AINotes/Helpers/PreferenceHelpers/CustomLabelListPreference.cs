@@ -61,7 +61,7 @@ namespace AINotes.Helpers.PreferenceHelpers {
             colorPicker.ColorSelected += color => {
                 selectedColor = color;
                 foreach (var v in colorPicker.Children) {
-                    if (!(v is CustomFrame f)) continue;
+                    if (v is not CustomFrame f) continue;
                     if (f.Background != selectedColor.ToBrush()) {
                         f.BorderBrush = Configuration.Theme.CardBorder;
                         f.BorderThickness = new Thickness(1);

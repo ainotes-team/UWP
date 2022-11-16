@@ -438,6 +438,10 @@ namespace AINotes.Controls.FileManagement {
                     fs.Dispose();
                     App.Page.AbsoluteOverlay.Children.Remove(pageCanvas);
                     var result = await App.SendToAppService(new ValueSet {{"json2pdf", (await FileHelper.GetFileJsonAsync(fullFileModel), backgroundImagePath, backgroundImagePos.Serialize(), selectedFile.Path).Serialize()}});
+                    if (result == null) {
+                        App.Page.Notifications.Add(new MDNotification("Export failed.\nCould not connect to AppService.\nPlease restart the app and try again."));
+                        return;
+                    }
                     Logger.Log("Print:", result.Message.Keys.ToFString(), result.Message.Values.ToFString());
                     App.Page.Notifications.Add(new MDNotification(result.Message.Values.Contains("ok") ? "Export successful" : "Export failed"));
                 });

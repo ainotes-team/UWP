@@ -50,7 +50,7 @@ namespace AINotes {
             }
         }
 
-        public static async Task<AppServiceResponse> SendToAppService(ValueSet request) {
+        public static async Task<AppServiceResponse?> SendToAppService(ValueSet request) {
             Logger.Log("[App]", "SendToAppService", request.Keys.ToFString(), request.Keys.ToFString(), Connection == null);
             if (Connection != null) return await Connection.SendMessageAsync(request);
             Logger.Log("[App]", "SendToAppService: Connection is null.", logLevel: LogLevel.Error);
