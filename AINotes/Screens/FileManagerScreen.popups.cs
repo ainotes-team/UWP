@@ -114,6 +114,8 @@ namespace AINotes.Screens {
             var itr = 0;
             StackPanel currentStack = null;
             foreach (var label in labels) {
+                if (label.Archived) continue;
+                
                 // Logger.Log(itr, "=>", itr % 3);
                 if (itr % 3 == 0) {
                     currentStack = new StackPanel {
