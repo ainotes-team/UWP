@@ -56,7 +56,8 @@ namespace AINotes.Screens {
 
             Task.Run(async () => {
                 foreach (var reducedFileModel in _copiedFileModels) {
-                    var newFileId = await FileHelper.CreateFileAsync(reducedFileModel.Name, reducedFileModel.Subject, targetDirectoryId);
+                    var labels = new List<int>(reducedFileModel.Labels);
+                    var newFileId = await FileHelper.CreateFileAsync(reducedFileModel.Name, reducedFileModel.Subject, targetDirectoryId, labels);
                     await FileHelper.UpdateFileAsync(newFileId, strokeContent: (await FileHelper.GetFileAsync(reducedFileModel.Id)).StrokeContent);
                     var currentComponentModels = await reducedFileModel.GetComponentModels();
                     foreach (var componentModel in currentComponentModels) {
